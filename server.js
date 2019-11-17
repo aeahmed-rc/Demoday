@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
-
+var flash    = require('connect-flash');
 var db, collection;
 
 const url = 'mongodb+srv://ahmed:demoday@demodayproject-rjf56.mongodb.net/test?retryWrites=true&w=majority'
@@ -15,6 +15,7 @@ app.listen(3000, () => {
             throw error;
         }
         db = client.db(dbName);
+
         console.log("Connected to `" + dbName + "`!");
     });
 });
@@ -29,7 +30,9 @@ app.get('/', function(req, res) {
       res.render('index.ejs');
   });
 
-
+  app.get('/signup.ejs', function(req, res) {
+      res.render('signup.ejs');
+  });
 
 
 
@@ -99,7 +102,7 @@ app.get('/', function(req, res) {
 // console.log('The magic happens on port ' + port);
 //
 //
-
+//
 
 
 
