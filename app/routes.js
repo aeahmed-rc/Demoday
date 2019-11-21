@@ -8,15 +8,15 @@ module.exports = function(app, passport, db) {
     });
 
     // PROFILE SECTION =========================
-    // app.get('/profile', isLoggedIn, function(req, res) {
-    //     db.collection('messages').find().toArray((err, result) => {
-    //       if (err) return console.log(err)
-    //       res.render('profile.ejs', {
-    //         user : req.user,
-    //         messages: result
-    //       })
-    //     })
-    // });
+    app.get('/profile', isLoggedIn, function(req, res) {
+        db.collection('messages').find().toArray((err, result) => {
+          if (err) return console.log(err)
+          res.render('profile.ejs', {
+            user : req.user,
+            messages: result
+          })
+        })
+    });
 
     // LOGOUT ==============================
 //     app.get('/logout', function(req, res) {
@@ -76,18 +76,18 @@ module.exports = function(app, passport, db) {
 // // =============================================================================
 //
 //     // locally --------------------------------
-//         // LOGIN ===============================
-//         // show the login form
-//         app.get('/login', function(req, res) {
-//             res.render('login.ejs', { message: req.flash('loginMessage') });
-//         });
-//
-//         // process the login form
-//         app.post('/login', passport.authenticate('local-login', {
-//             successRedirect : '/profile', // redirect to the secure profile section
-//             failureRedirect : '/login', // redirect back to the signup page if there is an error
-//             failureFlash : true // allow flash messages
-//         }));
+        // LOGIN ===============================
+        // show the login form
+        app.get('/login', function(req, res) {
+            res.render('login.ejs', { message: req.flash('loginMessage') });
+        });
+
+        // process the login form
+        app.post('/login', passport.authenticate('local-login', {
+            successRedirect : '/profile', // redirect to the secure profile section
+            failureRedirect : '/login', // redirect back to the signup page if there is an error
+            failureFlash : true // allow flash messages
+        }));
 //
         // // SIGNUP =================================
         // show the signup form
@@ -97,6 +97,7 @@ module.exports = function(app, passport, db) {
 
         // process the signup form
         app.post('/signup', passport.authenticate('local-signup', {
+          
             successRedirect : '/profile', // redirect to the secure profile section
             failureRedirect : '/signup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
