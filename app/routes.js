@@ -8,8 +8,9 @@ module.exports = function(app, passport, db) {
     });
 
     // PROFILE SECTION =========================
-    app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('messages').find().toArray((err, result) => {
+    app.get('/profile/:job', isLoggedIn, function(req, res) {
+      let job = req.params.job
+        db.collection('resources').find(job).toArray((err, result) => {
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user : req.user,
@@ -17,12 +18,21 @@ module.exports = function(app, passport, db) {
           })
         })
     });
+    //
+    // gets company login page
 
+        app.get('/companies', function(req, res) {
+            res.render('companyLogin.ejs');
+        });
+
+    app.get('/jobBoard', function(req, res) {
+        res.render('jobBoard.ejs');
+    });
     // LOGOUT ==============================
-//     app.get('/logout', function(req, res) {
-//         req.logout();
-//         res.redirect('/');
-//     });
+    app.get('/logOut', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
 //
 // // message board routes ===============================================================
 //
@@ -97,11 +107,34 @@ module.exports = function(app, passport, db) {
 
         // process the signup form
         app.post('/signup', passport.authenticate('local-signup', {
-          
+
             successRedirect : '/profile', // redirect to the secure profile section
             failureRedirect : '/signup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
+        //  gets the companies signup page
+        app.get('/companySignup', function(req, res) {
+            res.render('companySignup.ejs', { message: req.flash('signupMessage') });
+        });
+        // company signUp
+        app.post('/companySignup', passport.authenticate('local-signup', {
+
+            successRedirect : '/jobBoard', // redirect to the secure profile section
+            failureRedirect : '/companySignup', // redirect back to the signup page if there is an error
+            failureFlash : true // allow flash messages
+        }));
+        app.get('/companyLogin', function(req, res) {
+            res.render('companyLogin.ejs', { message: req.flash('signupMessage') });
+        });
+
+        app.post('/companyLogin', passport.authenticate('local-login', {
+
+            successRedirect : '/jobBoard', // redirect to the secure profile section
+            failureRedirect : '/companyLogin', // redirect back to the signup page if there is an error
+            failureFlash : true // allow flash messages
+        }));
+
+
 //
 // // =============================================================================
 // // UNLINK ACCOUNTS =============================================================
