@@ -8,16 +8,50 @@ module.exports = function(app, passport, db) {
     });
 
     // PROFILE SECTION =========================
-    app.get('/profile/:job', isLoggedIn, function(req, res) {
-      let job = req.params.job
-        db.collection('resources').find(job).toArray((err, result) => {
-          if (err) return console.log(err)
-          res.render('profile.ejs', {
-            user : req.user,
-            messages: result
-          })
+    app.get('/profile', isLoggedIn, function(req, res) {
+        res.render('profile.ejs')
         })
-    });
+// gets question and answer page
+        app.get('/q&a', isLoggedIn, function(req, res) {
+            res.render('q&a.ejs')
+            })
+// chat page
+            app.get('/chat', isLoggedIn, function(req, res) {
+                res.render('chat.ejs')
+                })
+    // HOME PAGE:
+//     app.post('/homePageInput', isLoggedIn, function(req, res) {
+// // FIX SYNTHEX
+//         db.collection('resources').findOne({Job:req.body.Job}, (err, result)) => {
+//           if (err) return console.log(err)
+//           res.render('SimpleInfo.ejs', {
+//           // make a page called simpleinfo.ejs you STUPID boy
+//             Info: result
+//           })
+//         })
+//     });
+// app.get('/homePageInput2', function(req, res) {
+//   let job = req.body.Job
+//   console.log(job)
+//     db.collection('resources').find().toArray((err, result) => {
+//       if (err) return console.log(err)
+//       res.render('SimpleInfo.ejs', {
+//       Info: result
+//       })
+//     })
+// });
+    app.post('/homePageInput', (req, res) => {
+      console.log(req.body.Job)
+       db.collection('resources').find({Job: req.body.Job}).toArray((err, result)  => {
+          // console.log(result)
+         if (err) return console.log(err)
+         console.log('saved to database')
+         res.render('SimpleInfo.ejs',{
+           Info:result
+         })
+       })
+     })
+
     //
     // gets company login page
 
@@ -88,28 +122,29 @@ module.exports = function(app, passport, db) {
 //     // locally --------------------------------
         // LOGIN ===============================
         // show the login form
-        app.get('/login', function(req, res) {
+        // User login
+        app.get('/Userlogin', function(req, res) {
             res.render('login.ejs', { message: req.flash('loginMessage') });
         });
 
         // process the login form
-        app.post('/login', passport.authenticate('local-login', {
+        app.post('/Userlogin', passport.authenticate('local-login', {
             successRedirect : '/profile', // redirect to the secure profile section
-            failureRedirect : '/login', // redirect back to the signup page if there is an error
+            failureRedirect : '/Userlogin', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
 //
         // // SIGNUP =================================
-        // show the signup form
-        app.get('/signup', function(req, res) {
+        // show the signup form User signup
+        app.get('/Usersignup', function(req, res) {
             res.render('signup.ejs', { message: req.flash('signupMessage') });
         });
 
         // process the signup form
-        app.post('/signup', passport.authenticate('local-signup', {
+        app.post('/Usersignup', passport.authenticate('local-signup', {
 
             successRedirect : '/profile', // redirect to the secure profile section
-            failureRedirect : '/signup', // redirect back to the signup page if there is an error
+            failureRedirect : '/Usersignup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
         //  gets the companies signup page

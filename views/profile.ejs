@@ -1,2 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>UserPage</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!--enable mobile device-->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!--fontawesome css-->
+      <link rel="stylesheet" href="css/userPagecss/font-awesome.min.css">
+      <!--bootstrap css-->
+      <link rel="stylesheet" href="css/userPagecss/bootstrap.min.css">
+      <!--animate css-->
+      <link rel="stylesheet" href="css/userPagecss/animate-wow.css">
+      <!--main css-->
+      <link rel="stylesheet" href="css/userPagecss/style.css">
+      <link rel="stylesheet" href="css/userPagecss/bootstrap-select.min.css">
+      <link rel="stylesheet" href="css/userPagecss/slick.min.css">
+      <!--responsive css-->
+      <link rel="stylesheet" href="css/userPagecss/responsive.css">
 
-<h1><%=messages.job[0]%></h1>
+   </head>
+   <body>
+      <header id="header" class="top-head">
+         <!-- Static navbar -->
+         <nav class="navbar navbar-default">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-md-4 col-sm-12 left-rs">
+                     <div class="navbar-header">
+                        <button type="button" id="top-menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <a href="index.html" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
+                     </div>
+                     <!-- <form class="navbar-form navbar-left web-sh">
+                        <div class="form">
+                           <input type="text" class="form-control" placeholder="Search for products or companies">
+                        </div>
+                     </form> -->
+                  </div>
+                  <div class="col-md-8 col-sm-12">
+                     <div class="right-nav">
+                        <div class="login-sr">
+                           <div class="login-signup">
+                              <ul>
+                                 <!-- <li><a href="#">Login</a></li> -->
+                                 <li><a class="custom-b" href="/logOut">Logout</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="help-r hidden-xs">
+                           <div class="help-box">
+                              <ul>
+                                 <!-- <li> <a data-toggle="modal" data-target="#myModal" href="#"> <span>Change</span> <img src="images/flag.png" alt="" /> </a> </li>
+                                 <li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Help </a> </li> -->
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="nav-b hidden-xs">
+                           <div class="nav-box">
+                              <ul>
+                                 <!-- <li><a href="howitworks.html">How it works</a></li>
+                                 <li><a href="about-us.html">Chamb for Business</a></li> -->
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!--/.container-fluid -->
+         </nav>
+      </header>
+      <!-- Modal -->
+      <div class="modal fade lug" id="myModal" role="dialog">
+         <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+               <!-- <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Change</h4>
+               </div> -->
+               <!-- <div class="modal-body">
+                  <ul>
+                     <li><a href="#"><img src="images/flag-up-1.png" alt="" /> United States</a></li>
+                     <li><a href="#"><img src="images/flag-up-2.png" alt="" /> France </a></li>
+                  </ul>
+               </div> -->
+            </div>
+         </div>
+      </div>
+      <div id="sidebar" class="top-nav">
+         <!-- <ul id="sidebar-nav" class="sidebar-nav">
+            <li><a href="#">Help</a></li>
+            <li><a href="howitworks.html">How it works</a></li>
+            <li><a href="#">chamb for Business</a></li>
+         </ul> -->
+      </div>
+      <div class="page-content-product">
+         <div class="main-product">
+            <div class="container">
+               <div class="row clearfix">
+                  <div class="find-box">
+                     <h1>Get your career back.</h1>
+                     <h4>It has never been easier.</h4>
+                     <div class="product-sh">
+                        <div class="col-sm-6">
+                           <!-- <div class="form-sh">
+                              <input type="text" placeholder="Search something you love" >
+                           </div> -->
+                        </div>
+                        <div class="col-sm-3">
+                           <div class="form-sh">
+                              <select class="selectpicker">
+                                 <option>Textiles</option>
+                                 <option>Furniture</option>
+                                 <option>Leather</option>
+                              </select>
+                           </div>
+                        </div>
+                        <!-- <div class="col-sm-3">
+                           <div class="form-sh"> <a class="btn" href="#">Search</a> </div>
+                        </div>
+                        <p>Or simply<a href="#"> click here </a> and get inspired!</p> -->
+                     </div>
+                  </div>
+               </div>
+               <div class="row clearfix">
+                  <div class="col-lg-3 col-sm-6 col-md-3">
+                     <a href="productpage.html">
+                        <div class="box-img">
+                           <h4>Resources</h4>
+                           <img src="images/Userimages/about-icon-3.png" alt="" />
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 col-md-3">
+                     <a href="/jobboard">
+                        <div class="box-img">
+                           <h4>Job Postings</h4>
+                           <img src="images/Userimages/job-search.png" alt="" />
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 col-md-3">
+                     <a href="/chat">
+                        <div class="box-img">
+                           <h4>Mentoring</h4>
+                           <img src="images/Userimages/chat-box.png" alt="" />
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 col-md-3">
+                     <a href="/q&a">
+                        <div class="box-img">
+                           <h4>Questions/Answers</h4>
+                           <img src="images/Userimages/question.png" alt="" />
+                        </div>
+                     </a>
+                  </div>
+                  <div>Icons made by <a href="https://www.flaticon.com/<?=_('authors/')?>freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                  <!-- <div class="col-lg-3 col-sm-6 col-md-3">
+                     <a href="productpage.html">
+                        <div class="box-img">
+                           <h4>Product</h4>
+                           <img src="images/product/10.png" alt="" />
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 col-md-3">
+                     <a href="productpage.html">
+                        <div class="box-img">
+                           <h4>Product</h4>
+                           <img src="images/product/11.png" alt="" />
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 col-md-3">
+                     <a href="productpage.html">
+                        <div class="box-img">
+                           <h4>Product</h4>
+                           <img src="images/product/12.png" alt="" />
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 col-md-3">
+                     <a href="productpage.html">
+                        <div class="box-img">
+                           <h4>Product</h4>
+                           <img src="images/product/13.png" alt="" />
+                        </div>
+                     </a>
+                  </div> -->
