@@ -51,7 +51,37 @@ module.exports = function(app, passport, db) {
          })
        })
      })
+     app.get('/jobposts', isLoggedIn, function(req, res) {
+      db.collection('jobpostings').find().toArray((err, result) => {
+        console.log('this is the results', result)
+        if (err) return console.log(err)
 
+        res.render('jobboard.ejs', {
+          jobposting:result
+        })
+      })
+  });
+     app.post('/postJobs', (req, res) => {
+       console.log(req.body.role)
+        db.collection('jobpostings').save({role:req.body.role,company:req.body.company,location:req.body.location,description:req.body.description},(err, result)  => {
+           console.log(result)
+          if (err) return console.log(err)
+          console.log('saved to database')
+          res.render('companyJobadd.ejs')
+        })
+      })
+
+      //  this gets the description of each role when clicked
+      app.get('/roledescription', isLoggedIn, function(req, res) {
+       db.collection('jobpostings').findOne({role:req.query.role},(err, result) => {
+         console.log('this is the results', result)
+         if (err) return console.log(err)
+
+         res.render('roledescription.ejs', {
+           jobdescription:result
+         })
+       })
+   });
     //
     // gets company login page
 
@@ -59,8 +89,12 @@ module.exports = function(app, passport, db) {
             res.render('companyLogin.ejs');
         });
 
-    app.get('/jobBoard', function(req, res) {
-        res.render('jobBoard.ejs');
+    // app.get('/jobBoard', function(req, res) {
+    //     res.render('jobBoard.ejs');
+    // });
+    // company adds to jobboard
+    app.get('/postJobs', function(req, res) {
+        res.render('companyJobadd.ejs');
     });
     // LOGOUT ==============================
     app.get('/logOut', function(req, res) {
@@ -149,12 +183,13 @@ module.exports = function(app, passport, db) {
         }));
         //  gets the companies signup page
         app.get('/companySignup', function(req, res) {
+          console.log(req.body.admin)
             res.render('companySignup.ejs', { message: req.flash('signupMessage') });
         });
         // company signUp
         app.post('/companySignup', passport.authenticate('local-signup', {
 
-            successRedirect : '/jobBoard', // redirect to the secure profile section
+            successRedirect : '/postJobs', // redirect to the secure profile section
             failureRedirect : '/companySignup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
@@ -164,7 +199,7 @@ module.exports = function(app, passport, db) {
 
         app.post('/companyLogin', passport.authenticate('local-login', {
 
-            successRedirect : '/jobBoard', // redirect to the secure profile section
+            successRedirect : '/postJobs', // redirect to the secure profile section
             failureRedirect : '/companyLogin', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));

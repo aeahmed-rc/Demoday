@@ -390,11 +390,7 @@
 				 	<div class="col-lg-9 column">
 				 		<div class="modrn-joblist">
 						 	<div class="tags-bar">
-								<% if(comapany login){%>
-								<form class="" action="/Jobposting" method="post">
-									<input type="text" name="companyPosting" value="">
-								</form>
-						<% } %>
+
 						 		<span>Full Time<i class="close-tag">x</i></span>
 						 		<span>UX/UI Design<i class="close-tag">x</i></span>
 						 		<span>Istanbul<i class="close-tag">x</i></span>
@@ -428,11 +424,20 @@
 								<div class="job-listing wtabs">
 									<div class="job-title-sec">
 										<div class="c-logo"> <img src="images/resource/l1.png" alt="" /> </div>
-										<h3><a href="#" title="">Web Designer / Developer</a></h3>
-										<span>Massimo Artemisis</span>
-										<div class="job-lctn"><i class="la la-map-marker"></i>Sacramento, California</div>
+										  <% for(var i=0; i<jobposting.length; i++) {%>
+										<a href="/roledescription?role=<%=jobposting[i].role%>">
+										<h3><%=jobposting[i].role%></h3>
+									</a>
+										<span><%=jobposting[i].company%></span>
+										<div class="job-lctn"><i class="la la-map-marker"></i><%=jobposting[i].location%></div>
+										<a href="/profile">hi</a>
+										<% } %>
 									</div>
-									<div class="job-style-bx">
+
+
+
+
+									<!-- <div class="job-style-bx">
 										<span class="job-is ft">Full time</span>
 										<span class="fav-job"><i class="la la-heart-o"></i></span>
 										<i>5 months ago</i>
@@ -450,8 +455,9 @@
 										<span class="fav-job"><i class="la la-heart-o"></i></span>
 										<i>5 months ago</i>
 									</div>
-								</div><!-- Job -->
-								<div class="job-listing wtabs">
+								</div> -->
+								<!-- Job -->
+								<!-- <div class="job-listing wtabs">
 									<div class="job-title-sec">
 										<div class="c-logo"> <img src="images/resource/l3.png" alt="" /> </div>
 										<h3><a href="#" title="">Regional Sales Manager South</a></h3>
@@ -462,9 +468,9 @@
 										<span class="job-is ft ">Full time</span>
 										<span class="fav-job"><i class="la la-heart-o"></i></span>
 										<i>5 months ago</i>
-									</div>
-								</div><!-- Job -->
-								<div class="job-listing wtabs">
+									</div> -->
+								<!-- </div><!- Job  -->
+								<!-- <div class="job-listing wtabs">
 									<div class="job-title-sec">
 										<div class="c-logo"> <img src="images/resource/l4.png" alt="" /> </div>
 										<h3><a href="#" title="">Marketing Dairector</a></h3>
@@ -476,8 +482,9 @@
 										<span class="fav-job"><i class="la la-heart-o"></i></span>
 										<i>5 months ago</i>
 									</div>
-								</div><!-- Job -->
-								<div class="job-listing wtabs">
+								</div> -->
+								<!-- Job -->
+								<!-- <div class="job-listing wtabs">
 									<div class="job-title-sec">
 										<div class="c-logo"> <img src="images/resource/l5.png" alt="" /> </div>
 										<h3><a href="#" title="">Application Developer</a></h3>
@@ -489,8 +496,9 @@
 										<span class="fav-job"><i class="la la-heart-o"></i></span>
 										<i>5 months ago</i>
 									</div>
-								</div><!-- Job -->
-								<div class="job-listing wtabs">
+								</div> -->
+								<!-- Job -->
+								<!-- <div class="job-listing wtabs">
 									<div class="job-title-sec">
 										<div class="c-logo"> <img src="images/resource/l6.png" alt="" /> </div>
 										<h3><a href="#" title="">Social Media and Public</a></h3>
@@ -502,8 +510,9 @@
 										<span class="fav-job"><i class="la la-heart-o"></i></span>
 										<i>5 months ago</i>
 									</div>
-								</div><!-- Job -->
-								<div class="job-listing wtabs">
+								</div> -->
+								<!-- Job -->
+								<!-- <div class="job-listing wtabs">
 									<div class="job-title-sec">
 										<div class="c-logo"> <img src="images/resource/l2.png" alt="" /> </div>
 										<h3><a href="#" title="">C Developer (Senior) C .Net</a></h3>
@@ -515,8 +524,9 @@
 										<span class="fav-job"><i class="la la-heart-o"></i></span>
 										<i>5 months ago</i>
 									</div>
-								</div><!-- Job -->
-								<div class="job-listing wtabs">
+								</div> -->
+								<!-- Job -->
+								<!-- <div class="job-listing wtabs">
 									<div class="job-title-sec">
 										<div class="c-logo"> <img src="images/resource/l3.png" alt="" /> </div>
 										<h3><a href="#" title="">Regional Sales Manager South</a></h3>
@@ -528,8 +538,9 @@
 										<span class="fav-job"><i class="la la-heart-o"></i></span>
 										<i>5 months ago</i>
 									</div>
-								</div><!-- Job -->
-								<div class="job-listing wtabs">
+								</div> -->
+								<!-- Job -->
+								<!-- <div class="job-listing wtabs">
 									<div class="job-title-sec">
 										<div class="c-logo"> <img src="images/resource/l4.png" alt="" /> </div>
 										<h3><a href="#" title="">Marketing Dairector</a></h3>
@@ -541,8 +552,9 @@
 										<span class="fav-job"><i class="la la-heart-o"></i></span>
 										<i>5 months ago</i>
 									</div>
-								</div><!-- Job -->
-								<div class="job-listing wtabs">
+								</div> -->
+								<!-- Job -->
+								<!-- <div class="job-listing wtabs">
 									<div class="job-title-sec">
 										<div class="c-logo"> <img src="images/resource/l5.png" alt="" /> </div>
 										<h3><a href="#" title="">Application Developer</a></h3>
@@ -554,18 +566,19 @@
 										<span class="fav-job"><i class="la la-heart-o"></i></span>
 										<i>5 months ago</i>
 									</div>
-								</div><!-- Job -->
+								</div> -->
+								<!-- Job -->
 
-							</div>
+							<!-- </div>
 							<div class="viewmore"><span><i></i><i></i><i></i>View More</span></div>
 						 </div>
 					 </div>
 				 </div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
-	<footer>
+	<!-- <footer>
 		<div class="block">
 			<div class="container">
 				<div class="row">
@@ -585,8 +598,9 @@
 									<a href="#" title=""><i class="fa fa-pinterest"></i></a>
 									<a href="#" title=""><i class="fa fa-behance"></i></a>
 								</div>
-							</div><!-- About Widget -->
-						</div>
+							</div> -->
+							<!-- About Widget -->
+						<!-- </div>
 					</div>
 					<div class="col-lg-4 column">
 						<div class="widget">
@@ -646,9 +660,9 @@
 		</div>
 	</footer>
 
-</div>
+</div> -->
 
-<div class="account-popup-area signin-popup-box">
+<!-- <div class="account-popup-area signin-popup-box">
 	<div class="account-popup">
 		<span class="close-popup"><i class="la la-close"></i></span>
 		<h3>User Login</h3>
@@ -680,9 +694,10 @@
 			</div>
 		</div>
 	</div>
-</div><!-- LOGIN POPUP -->
+</div> -->
+<!-- LOGIN POPUP -->
 
-<div class="account-popup-area signup-popup-box">
+<!-- <div class="account-popup-area signup-popup-box">
 	<div class="account-popup">
 		<span class="close-popup"><i class="la la-close"></i></span>
 		<h3>Sign Up</h3>
@@ -725,7 +740,8 @@
 			</div>
 		</div>
 	</div>
-</div><!-- SIGNUP POPUP -->
+</div> -->
+<!-- SIGNUP POPUP -->
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery.min.js" type="text/javascript"></script>
 <script src="/js/modernizr.js" type="text/javascript"></script>
