@@ -1494,7 +1494,7 @@ label::after {
 }
 .job-title-sec h3 {
    display: table;
-   font-size: 18px;
+   font-size: 40px;
    color: #232323;
    margin: 0;
        margin-bottom: 0px;
@@ -1504,7 +1504,7 @@ label::after {
 .job-title-sec span {
    float: left;
    font-family: Open Sans;
-   font-size: 13px;
+   font-size: 30px;
    margin-top: 1px;
 }
 .job-lctn {
@@ -3694,7 +3694,7 @@ header.style4 .menu-sec nav > ul > li.menu-item-has-children > a::before {
    display: inline;
    padding-top: 20px;
    width: 100%;
-   font-size: 13px;
+   font-size: 25px;
 }
 .job-listing.wtabs .job-lctn i {
    float: none;

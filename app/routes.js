@@ -1,4 +1,4 @@
-module.exports = function(app, passport, db) {
+module.exports = function(app, passport, db,io) {
 
 // normal routes ===============================================================
 
@@ -12,34 +12,19 @@ module.exports = function(app, passport, db) {
         res.render('profile.ejs')
         })
 // gets question and answer page
-        app.get('/q&a', isLoggedIn, function(req, res) {
+    app.get('/q&a', isLoggedIn, function(req, res) {
             res.render('q&a.ejs')
             })
 // chat page
-            app.get('/chat', isLoggedIn, function(req, res) {
-                res.render('chat.ejs')
-                })
-    // HOME PAGE:
-//     app.post('/homePageInput', isLoggedIn, function(req, res) {
-// // FIX SYNTHEX
-//         db.collection('resources').findOne({Job:req.body.Job}, (err, result)) => {
-//           if (err) return console.log(err)
-//           res.render('SimpleInfo.ejs', {
-//           // make a page called simpleinfo.ejs you STUPID boy
-//             Info: result
-//           })
+// app.get('/chat', isLoggedIn, function(req, res) {
+//   res.sendFile(__dirname + '/chat.ejs');
+//             // res.render('chat.ejs')
 //         })
-//     });
-// app.get('/homePageInput2', function(req, res) {
-//   let job = req.body.Job
-//   console.log(job)
-//     db.collection('resources').find().toArray((err, result) => {
-//       if (err) return console.log(err)
-//       res.render('SimpleInfo.ejs', {
-//       Info: result
-//       })
-//     })
+//
+// io.on('connection', function(socket){
+// console.log('a user connected');
 // });
+
     app.post('/homePageInput', (req, res) => {
       console.log(req.body.Job)
        db.collection('resources').find({Job: req.body.Job}).toArray((err, result)  => {
@@ -61,15 +46,36 @@ module.exports = function(app, passport, db) {
         })
       })
   });
+// users searches for job
+  app.post('/jobpostssearch', isLoggedIn, function(req, res) {
+    const filter={}
+    if(req.body.search){
+      filter.role=req.body.search
+    }
+    if(req.body.location){
+      filter.location=req.body.location
+    }
+   db.collection('jobpostings').find(filter).toArray((err, result) => {
+     console.log('this is the results', result,req.body.search,req.body.location)
+     if (err) return console.log(err)
+
+     res.render('jobboard.ejs', {
+       jobposting:result
+     })
+   })
+});
+
      app.post('/postJobs', (req, res) => {
-       console.log(req.body.role)
-        db.collection('jobpostings').save({role:req.body.role,company:req.body.company,location:req.body.location,description:req.body.description},(err, result)  => {
+       console.log('This is the url',req.body.Url)
+        db.collection('jobpostings').save({role:req.body.role,company:req.body.company,location:req.body.location,description:req.body.description,Url:req.body.Url},(err, result)  => {
            console.log(result)
           if (err) return console.log(err)
           console.log('saved to database')
           res.render('companyJobadd.ejs')
         })
       })
+
+
 
       //  this gets the description of each role when clicked
       app.get('/roledescription', isLoggedIn, function(req, res) {
@@ -88,6 +94,11 @@ module.exports = function(app, passport, db) {
         app.get('/companies', function(req, res) {
             res.render('companyLogin.ejs');
         });
+
+        //  chat box
+        app.get('/chat', function(req, res){
+  res.sendFile(__dirname + '/chat.ejs');
+});
 
     // app.get('/jobBoard', function(req, res) {
     //     res.render('jobBoard.ejs');

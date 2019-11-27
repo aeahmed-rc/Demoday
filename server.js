@@ -44,6 +44,8 @@ const MongoClient = require('mongodb').MongoClient
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -58,7 +60,7 @@ var db
 mongoose.connect(configDB.url,  { useNewUrlParser: true }, (err, database) => {
   if (err) return console.log(err)
   db = database
-  require('./app/routes.js')(app, passport, db);
+  require('./app/routes.js')(app, passport, db,io);
 }); // connect to our database
 
 //app.listen(port, () => {
@@ -92,6 +94,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+
 
 
 // routes ======================================================================

@@ -5,13 +5,14 @@
     <title></title>
   </head>
   <body>
-    <form class="" action="/postJobs" method="post">
-      <input type="text" name="role" value="Role">
-      <input type="text" name="company" value="Company Name">
-      <input type="text" name="location" value="Location">
+    <form class="" action="/postJobs" method="post" >
+      <input type="text" name="role" value="" placeholder="Role">
+      <input type="text" name="company" value="" placeholder="Company Name">
+      <input type="text" name="location" value="" placeholder="Location">
+      <input type="text" name="Url" value="" placeholder="Add Link to Job">
       <textarea name="description" rows="8" cols="80"></textarea>
       <input type="submit" name="" value="Add to Job postings">
     </form>
-    <a href="jobboard.ejs">Go to Job Board</a>
+    <a href="/jobposts">Go to Job Board</a>
   </body>
 </html>
