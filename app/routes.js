@@ -9,21 +9,67 @@ module.exports = function(app, passport, db,io) {
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile.ejs')
+      console.log(req.user)
+        res.render('profile.ejs', { user: req.user })
         })
 // gets question and answer page
     app.get('/q&a', isLoggedIn, function(req, res) {
             res.render('q&a.ejs')
             })
+            // gets company login page
+            app.get('/login', function(req, res) {
+                res.render('companyLogin.ejs');
+            });
 // chat page
-// app.get('/chat', isLoggedIn, function(req, res) {
-//   res.sendFile(__dirname + '/chat.ejs');
-//             // res.render('chat.ejs')
-//         })
-//
+//  chat box
+// app.get('/chat', function(req, res){
+// res.sendFile(__dirname + '/chat.ejs');
+// });
+app.get('/chat', isLoggedIn, function(req, res) {
+  let dirname=__dirname.slice(0,-3)
+  console.log('Chat is working', dirname);
+  // res.sendFile(dirname + "views" + '/chat.ejs');
+  res.render('chat.ejs')
+  console.log(dirname)
+})
+
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
+console.log(io.on)
 // io.on('connection', function(socket){
 // console.log('a user connected');
+// socket.on('disconnect', function(){
+//     console.log('user disconnected');
+//   });
 // });
+
+
+  app.get('/individualResources', isLoggedIn , (req,res) =>{
+    let Job=req.user.category.toLowerCase()
+    db.collection('resources').find({Job: Job}).toArray((err, result)  => {
+       // console.log(result)
+      if (err) return console.log(err)
+      console.log('saved to database')
+      res.render('SimpleInfo.ejs',{
+        Info:result
+      })
+    })
+  })
+
+function removeField(result){
+  // item is the actual items in the array(result) ex: job, facebook
+  return result.map((item) => {
+    return {
+      Job: item.Job,
+      FacebookGroups: item.FacebookGroups,
+      Websites: item.Websites,
+    }
+  });
+}
 
     app.post('/homePageInput', (req, res) => {
       console.log(req.body.Job)
@@ -32,10 +78,20 @@ module.exports = function(app, passport, db,io) {
          if (err) return console.log(err)
          console.log('saved to database')
          res.render('SimpleInfo.ejs',{
-           Info:result
+           Info: removeField(result)
          })
        })
      })
+
+
+     // This is beginning of job posts and job board page
+
+     // company adds to jobboard when logged in or signup get redirected here to begin adding jobs
+     app.get('/postJobs', function(req, res) {
+         res.render('companyJobadd.ejs');
+     });
+
+
      app.get('/jobposts', isLoggedIn, function(req, res) {
       db.collection('jobpostings').find().toArray((err, result) => {
         console.log('this is the results', result)
@@ -46,35 +102,46 @@ module.exports = function(app, passport, db,io) {
         })
       })
   });
-// users searches for job
-  app.post('/jobpostssearch', isLoggedIn, function(req, res) {
-    const filter={}
-    if(req.body.search){
-      filter.role=req.body.search
-    }
-    if(req.body.location){
-      filter.location=req.body.location
-    }
-   db.collection('jobpostings').find(filter).toArray((err, result) => {
-     console.log('this is the results', result,req.body.search,req.body.location)
-     if (err) return console.log(err)
 
-     res.render('jobboard.ejs', {
-       jobposting:result
-     })
-   })
-});
 
+// Companies post jobs saves to database
      app.post('/postJobs', (req, res) => {
+       let role=req.body.role.toLowerCase()
+       let company=req.body.company.toLowerCase()
+       let location=req.body.location.toLowerCase()
+       console.log('this is role in postjobs',role,company,location)
+
        console.log('This is the url',req.body.Url)
-        db.collection('jobpostings').save({role:req.body.role,company:req.body.company,location:req.body.location,description:req.body.description,Url:req.body.Url},(err, result)  => {
+        db.collection('jobpostings').save({role,company,location,description:req.body.description,Url:req.body.Url},(err, result)  => {
            console.log(result)
           if (err) return console.log(err)
           console.log('saved to database')
           res.render('companyJobadd.ejs')
         })
       })
+      // users searches for job
+    app.post('/jobpostssearch', isLoggedIn, function(req, res) {
+          console.log("this is before the tolowercase", req.body.search)
+          let search=req.body.search.toLowerCase()
+          let location=req.body.location.toLowerCase()
+          console.log("this is after to lowercase",search)
+          const filter={}
+          if(search){
+            filter.role=search
+            console.log("this is in the if statement" ,filter.role)
+          }
+          if(location){
+            filter.location=location
+          }
+         db.collection('jobpostings').find(filter).toArray((err, result) => {
+           console.log('this is the results', result,filter)
+           if (err) return console.log(err)
 
+           res.render('jobboard.ejs', {
+             jobposting:result
+           })
+         })
+      });
 
 
       //  this gets the description of each role when clicked
@@ -89,24 +156,17 @@ module.exports = function(app, passport, db,io) {
        })
    });
     //
-    // gets company login page
 
+//  from main page click on compnaies in nav bar
         app.get('/companies', function(req, res) {
             res.render('companyLogin.ejs');
         });
 
-        //  chat box
-        app.get('/chat', function(req, res){
-  res.sendFile(__dirname + '/chat.ejs');
-});
 
     // app.get('/jobBoard', function(req, res) {
     //     res.render('jobBoard.ejs');
     // });
-    // company adds to jobboard
-    app.get('/postJobs', function(req, res) {
-        res.render('companyJobadd.ejs');
-    });
+
     // LOGOUT ==============================
     app.get('/logOut', function(req, res) {
         req.logout();

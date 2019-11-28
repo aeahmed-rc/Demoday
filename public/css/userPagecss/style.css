@@ -65,7 +65,10 @@ h6 {
 	margin: 0px;
 	padding: 0px;
 }
-
+.find-box h2{
+	color: white;
+	text-align: center;
+}
 ul,
 ol {
 	list-style: none;

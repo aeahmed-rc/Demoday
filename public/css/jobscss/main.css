@@ -4,7 +4,7 @@
 /* Mobile Layout: 320px */
 /* Wide Mobile Layout: 480px */
 /* =================================== */
-/*  Basic Style 
+/*  Basic Style
 /* =================================== */
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
@@ -155,6 +155,30 @@ h6, .h6 {
 td, th {
   border-radius: 0px;
 }
+.post-job-btn{
+  border: 2px solid;
+      border-radius: 12px;
+      background: #f31340;
+      font-size: 20px;
+      padding: 4px;
+      color: white;
+    font-weight: 400
+}
+.text-center.container{
+  border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+}
+
+.children{
+  border:1px solid green;
+  width: 30%;
+
+}
+
+
 
 /**
  * For modern browsers
@@ -1979,7 +2003,7 @@ body:after {
 
 .p1-gradient-bg, body:after, .primary-btn:after, .banner-area, .active-banner-slider .item:before, .single-feature .icon:after, .single-generic-feature .icon:after, .story-area, .story-area-2, .footer-widget-area, .single-widget .icon:after, .footer-social a:after {
   background-image: -moz-linear-gradient(135deg, #49e3ce 0%, #9920ed 100%);
-  background-image: -webkit-linear-gradient(135deg, #49e3ce 0%, #9920ed 100%);
+  background-image: -webkit-linear-gradient(135deg, #6b76ec 0%, #878cc8 100%);
   background-image: -ms-linear-gradient(135deg, #49e3ce 0%, #9920ed 100%);
 }
 
@@ -2109,7 +2133,7 @@ body:after {
   position: absolute;
   top: 0;
   left: 0;
-  width: 75%;
+  width: 100%;
   height: 100%;
   z-index: 2;
   opacity: .9;

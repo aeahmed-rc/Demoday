@@ -48,6 +48,7 @@
                            <div class="login-signup">
                               <ul>
                                  <!-- <li><a href="#">Login</a></li> -->
+
                                  <li><a class="custom-b" href="/logOut">Logout</a></li>
                               </ul>
                            </div>
@@ -105,6 +106,8 @@
             <div class="container">
                <div class="row clearfix">
                   <div class="find-box">
+                    <h2>Hello,<%= user.category %></h2>
+                    <h2><%= user.local.username %></h2>
                      <h1>Get your career back.</h1>
                      <h4>It has never been easier.</h4>
                      <div class="product-sh">
@@ -131,7 +134,7 @@
                </div>
                <div class="row clearfix">
                   <div class="col-lg-3 col-sm-6 col-md-3">
-                     <a href="productpage.html">
+                     <a href="/individualResources">
                         <div class="box-img">
                            <h4>Resources</h4>
                            <img src="images/Userimages/about-icon-3.png" alt="" />
