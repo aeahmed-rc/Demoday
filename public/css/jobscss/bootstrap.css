@@ -288,8 +288,16 @@ textarea {
   line-height: inherit;
   border-radius: 10px;
   padding:3px;
+  outline: none;
 }
-
+.container.jobsearch{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.jobsearchForm{
+  width:74%;
+}
 button,
 input {
   overflow: visible;

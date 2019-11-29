@@ -1493,13 +1493,15 @@ label::after {
    max-width: 100%;
 }
 .job-title-sec h3 {
-   display: table;
-   font-size: 40px;
+   display: inline-block;
+   font-size: 21px;
    color: #232323;
    margin: 0;
        margin-bottom: 0px;
    margin-bottom: 7px;
    margin-top: 3px;
+   margin-left: 4%;
+letter-spacing: 2px;
 }
 .job-title-sec span {
    float: left;

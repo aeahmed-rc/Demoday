@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div class="desc text-center container">
+      <% for(var i=0; i<friends.length; i++) {%>
+      <div class="children">
+<ul>
+  <li><%=friends[i].local.username%></li>
+  <li><%=friends[i].local.email%></li>
+</ul>
+    </div>
+    <% } %>
+    </div>
+  </body>
+</html>

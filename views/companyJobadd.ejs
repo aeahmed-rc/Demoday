@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -15,4 +15,133 @@
     </form>
     <a href="/jobposts">Go to Job Board</a>
   </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Job Post</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/vendorThree/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/vendorThree/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/vendorThree/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/vendorThree/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/vendorThree/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/vendorThree/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/companypostjobscss/util.css">
+	<link rel="stylesheet" type="text/css" href="css/companypostjobscss/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+  <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="/postJobs" method="post">
+				<span class="contact100-form-title">
+					Help us decrease brain waste!
+          Enter jobs below.
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<span class="label-input100">Role</span>
+					<input class="input100" name="role" value="" placeholder="Role">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">Place of Hire</span>
+					<input class="input100" type="text" name="company" value="" placeholder="Company Name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Location</span>
+          <input type="text" name="location" value="" placeholder="Location">
+					<div>
+            <div class="wrap-input100 input100-select">
+    					<span class="label-input100">Link</span>
+              <input type="text" name="Url" value="" placeholder="Add Link to Job">
+            </div>
+    					<!-- <div>
+						<select class="selection-2" name="service">
+							<option>Choose Services</option>
+							<option>Online Store</option>
+							<option>eCommerce Bussiness</option>
+							<option>UI/UX Design</option>
+							<option>Online Services</option>
+						</select>
+					</div> -->
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 input100-select">
+					<!-- <span class="label-input100">Budget</span> -->
+					<!-- <div>
+						<select class="selection-2" name="JobCatagory">
+							<option>Select Job field</option>
+							<option>Medical</option>
+							<option>Law</option>
+							<option>Engineering</option>
+						</select>
+					</div> -->
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Message is required">
+					<span class="label-input100">Job Description</span>
+					<textarea class="input100" name="description" placeholder="Enter description of role.."></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+					<button type="submit" name="button" class="contact100-form-btn" value="Add to Job postings">
+
+							<span>
+							Post Job
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+</button>
+					</div>
+
+
+
+			</form>
+		</div>
+    <div >
+      <div >
+    <a href="/jobposts" >Go to Job Board</a>
+      </div>
+
+        <span>
+          <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+        </span>
+
+    </div>
+
+  </div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+
+
+
+</body>
 </html>

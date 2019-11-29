@@ -165,15 +165,16 @@ td, th {
     font-weight: 400
 }
 .text-center.container{
-  border: 1px solid red;
+
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  margin-left: 4%;
 
 }
 
 .children{
-  border:1px solid green;
+  border-top: solid 1px black;
   width: 30%;
 
 }
