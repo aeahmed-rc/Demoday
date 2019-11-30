@@ -1,0 +1,149 @@
+*{
+  box-sizing: border-box;
+}
+body{
+background: #878cc8;
+}
+ nav{
+  margin-bottom: 10px;
+  height: auto;
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  background:#40477d;
+  margin: auto;
+}
+nav li{
+display: inline;
+border: 5px solid red;
+padding: 3px;
+background:#f5035a;
+margin-left: 2%;
+width: 50%;
+border-radius: 10px;
+
+}
+nav li a{
+  text-decoration: none;
+  color: white;
+  font-family: 'Rokkitt', serif;
+}
+nav ul{
+  width: 100%;
+}
+.maincontainer{
+
+  border-radius: 10px;
+  width: 95%;
+  height: 300px;
+  margin: auto;
+  box-shadow: -2px 6px 10px grey;
+  margin-bottom: 10px;
+  background: #40477d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.formContainer{
+
+  margin:0 auto ;
+  height: 100px;
+  width: 50%;
+background: #40477d;
+text-align: center;
+}
+.postInput{
+  width: 60%;
+  height: 50px;
+  border:none;
+  border-bottom: 1px solid white;
+  outline: none;
+  font-size: 20px;
+  background:#40477d;
+  color: white;
+}
+::placeholder{
+  color:white;
+  font-family: 'Rokkitt', serif;
+  font-weight: lighter;
+}
+h2{
+  font-weight: 100;
+  color: white;
+}
+.postButton{
+  text-decoration: none;
+  color: white;
+  font-family: 'Rokkitt', serif;
+  background-color: #f5035a;
+  padding:8px;
+  font-size: 20px;
+border-radius: 10px;
+outline: none;
+}
+
+.Boxes {
+  width: 60%;
+  height: 350px;
+  list-style: none;
+  margin: auto;
+  box-shadow: -6px 6px 10px grey;
+  background: white;
+  color: black;
+  border-radius: 15px;
+}
+.post {
+  height: 65%;
+  display: flex;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  height: 35%;
+  font-size: 25px;
+}
+.person {
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  margin-top: 3%;
+}
+.question {
+  width: 80%;
+  height: 100%;
+  margin-right: 3%;
+}
+.postTitle {
+  margin-top: 3%;
+  font-size: 25px;
+}
+.postText {
+  margin-top: 3%;
+}
+.actions i {
+  letter-spacing: 10px;
+  cursor: pointer;
+}
+.actions i:hover {
+  color: grey;
+}
+
+
+
+/*
+.formContainer{
+margin: auto;
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  background: #edf0f6;
+  height:400px;
+}
+.form{
+margin: auto;
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}  */

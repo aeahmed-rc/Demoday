@@ -16,23 +16,50 @@ module.exports = function(app, passport, db, io, ObjectId) {
   })
   // gets question and answer page
   app.get('/q&a', isLoggedIn, function(req, res) {
-    res.render('q&a.ejs')
+    db.collection('questions').find().toArray((err, result) => {
+      // console.log(result)
+      if (err) return console.log(err)
+      console.log('saved to database')
+      res.render('qandcomment.ejs', {
+        users:req.user,
+        questions: result
+      })
+    })
   })
 
-  //     // app.put('/messages', (req, res) => {
-  //     //   db.collection('messages')
-  //     //   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-  //     //     $set: {
-  //     //       thumbUp:req.body.thumbUp + 1
-  //     //     }
-  //     //   }, {
-  //     //     sort: {_id: -1},
-  //     //     upsert: true
-  //     //   }, (err, result) => {
-  //     //     if (err) return res.send(err)
-  //     //     res.send(result)
-  //     //   })
-  //     // })
+  app.post('/questions',isLoggedIn, (req, res) => {
+      db.collection('questions').save({question: req.body.question, comment:[],user: req.user._id}, (err, result) => {
+          if (err) return console.log(err)
+          console.log('saved to database')
+          res.redirect('/q&a')
+        })
+      })
+
+
+  app.put('/questions',isLoggedIn, (req, res) => {
+        console.log('the put works')
+        console.log(req.body.question,req.body.comment)
+        db.collection('questions')
+        .findOneAndUpdate({question: req.body.question, user:req.user._id}, {
+          $push: {
+            comment: req.body.comment
+          }
+        }, {
+          sort: {_id: -1},
+          upsert: true
+        }, (err, result) => {
+          if (err) return res.send(err)
+          res.send(result)
+        })
+      })
+
+  app.delete('/questions', isLoggedIn, (req, res) => {
+            db.collection('messages').findOneAndDelete({question: req.body.question, user: req.user._id}, (err, result) => {
+              if (err) return res.send(500, err)
+              res.send('Message deleted!')
+            })
+          })
+
 
   // gets company login page
   app.get('/login', function(req, res) {

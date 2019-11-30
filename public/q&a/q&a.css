@@ -105,3 +105,7 @@ div.wpcf7 input[type="file"] {
 div.wpcf7 input[type="file"]:disabled {
 	cursor: default;
 }
+.Myhello{
+  font-size: 100px;
+  color: red;
+}
