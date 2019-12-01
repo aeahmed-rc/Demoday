@@ -19,37 +19,40 @@
     <section class="maincontainer">
       <section class="formContainer">
         <h2>Forum</h2>
-
       </section>
       <section class="formContainer">
         <form class="" method="Post" action="/questions">
           <input class="postInput" type="text" name="question" value="" placeholder="Question">
           <button type="submit" name="button" class="postButton">Post question</button>
-
         </form>
       </section>
     </section>
+
+
   <% for(let i=0;i<questions.length; i++){%>
     <li class="Boxes">
+      <h4 class="delete">X</h4>
       <div class="post">
         <div class="person">
           <p class="name">Question posted by:<%=users.local.username%></p>
         </div>
         <div class="question">
+          <h3>Question</h3>
           <h3 class="postTitle"><%=questions[i].question%></h3>
           <% for(let j=0;j<questions[i].comment.length; j++){%>
           <p class="postText"><%=questions[i].comment[j]%></p>
   <% } %>
           <input type="text" name="comment" placeholder="Comment" class="commentInput">
 
-          <button type="button" name="button" class="btn black commentButton">Submit</button>
+          <button type="submit" name="button" class="btn black commentButton" placeholder="Comment Here">Comment</button>
 
         </div>
 
       </div>
       <div class="actions">
-          <i class="fas fa-thumbs-up"></i>
-          <i class="fas fa-thumbs-down"></i>
+          <i class="fas fa-thumbs-up thumbsUp"></i>
+          <i class="fas fa-thumbs-down thumbsDown"></i>
+          <span class="result"><%=questions[i].thumbsUp%></span>
       </div>
     </li>
     <% } %>

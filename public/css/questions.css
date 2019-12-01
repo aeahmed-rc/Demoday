@@ -91,6 +91,7 @@ outline: none;
   background: white;
   color: black;
   border-radius: 15px;
+  margin-bottom: 10px;
 }
 .post {
   height: 65%;
@@ -129,6 +130,26 @@ outline: none;
   color: grey;
 }
 
+.commentButton{
+  text-decoration: none;
+  color: white;
+  font-family: 'Rokkitt', serif;
+  background-color: #f5035a;
+  padding:8px;
+  font-size: 20px;
+border-radius: 10px;
+outline: none;
+}
+.commentInput{
+  width: 60%;
+  height: 50px;
+  border:none;
+  border-bottom: 1px solid grey;
+  outline: none;
+  font-size: 20px;
+
+  color: black;
+}
 
 
 /*

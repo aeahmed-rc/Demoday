@@ -28,7 +28,7 @@ module.exports = function(app, passport, db, io, ObjectId) {
   })
 
   app.post('/questions',isLoggedIn, (req, res) => {
-      db.collection('questions').save({question: req.body.question, comment:[],user: req.user._id}, (err, result) => {
+      db.collection('questions').save({question: req.body.question, comment:[],user: req.user._id,thumbsUp:0,thumbsDown:0}, (err, result) => {
           if (err) return console.log(err)
           console.log('saved to database')
           res.redirect('/q&a')
@@ -36,7 +36,7 @@ module.exports = function(app, passport, db, io, ObjectId) {
       })
 
 
-  app.put('/questions',isLoggedIn, (req, res) => {
+  app.put('/q&a/questions',isLoggedIn, (req, res) => {
         console.log('the put works')
         console.log(req.body.question,req.body.comment)
         db.collection('questions')
@@ -53,8 +53,25 @@ module.exports = function(app, passport, db, io, ObjectId) {
         })
       })
 
-  app.delete('/questions', isLoggedIn, (req, res) => {
-            db.collection('messages').findOneAndDelete({question: req.body.question, user: req.user._id}, (err, result) => {
+      app.put('/q&a/thumbsUps',isLoggedIn, (req, res) => {
+            console.log('the put works')
+            console.log(req.body.question,req.body.comment,req.body.thumbsUp)
+            db.collection('questions')
+            .findOneAndUpdate({question: req.body.question, comment:req.body.comment, }, {
+              $set: {
+                thumbsUp: req.body.thumbsUp +1
+              }
+            }, {
+              sort: {_id: -1},
+              upsert: true
+            }, (err, result) => {
+              if (err) return res.send(err)
+              res.send(result)
+            })
+          })
+
+  app.delete('/q&a/delete', isLoggedIn, (req, res) => {
+            db.collection('questions').findOneAndDelete({question: req.body.question, comment:req.body.comment, user: req.user._id}, (err, result) => {
               if (err) return res.send(500, err)
               res.send('Message deleted!')
             })
