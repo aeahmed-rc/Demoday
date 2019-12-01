@@ -90,21 +90,21 @@
 									<% for(var i=0; i<jobposting.length; i++) {%>
 									<div class="children">
 
-
-
-									<h6 class="title text-uppercase"><a href="/roledescription?role=<%=jobposting[i].role%>">
-										<%=jobposting[i].role%>
-							 	 </a>
-							 </h6>
 								 <ul>
-								 <li><%=jobposting[i].company%></li>
-								 <li><%=jobposting[i].location%></li>
+								 <h6 class="title text-uppercase"><li><%=jobposting[i].role%></li></h6>
+								 <li class="text-uppercase"><%=jobposting[i].company%></li>
+								 <li class="text-uppercase"><%=jobposting[i].location%></li>
 							 </ul>
-
+							 <h6 class="title text-uppercase"><a href="/roledescription?role=<%=jobposting[i].role%>" target="_blank" class="description">
+									Role Description
+							 </a>
+						 </h6>
 							 	</div>
-								<% } %>
+	<% } %>
 								</div>
+
 							</div>
+
 						</div>
 
 					</div>
