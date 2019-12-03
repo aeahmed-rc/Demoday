@@ -71,14 +71,57 @@ a {
 }
 .description{
   border: 2px solid;
-      border-radius: 12px;
-      background: #f31340;
-      font-size: 15px;
-      padding: 4px;
+      border-radius: 13px;
+      background: white;
+      padding: 5px;
       color: white;
-      font-weight: 400;
+      /* font-weight: 400; */
+      color: black;
+      font-size: 15px;
+      font-family: 'Rokkitt', serif;
+      outline: none;
+      cursor: pointer;
 
 }
+.description:hover{
+  color:white;
+  background: #f31340;
+}
+.container.jobsearch{
+  width:100%;
+}
+.content.jobsearch{
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.jobsearchForm{
+  width: 100%;
+  text-align: center;
+}
+.inputs{
+  width:30%;
+}
+.submitInput{
+  border: 2px solid;
+    border-radius: 13px;
+      background: #f31340;
+      	padding: 5px;
+      color: white;
+      font-weight: 400;
+      color:white;
+      font-size: 25px;
+      font-family:'Rokkitt', serif;
+      cursor: pointer;
+}
+
+/* .images{
+  width:50%;
+}
+.images img{
+  width:30%;
+} */
 
 iframe {
   border: 0;
@@ -167,12 +210,15 @@ td, th {
 }
 .post-job-btn{
   border: 2px solid;
-      border-radius: 12px;
+    border-radius: 13px;
       background: #f31340;
-      font-size: 20px;
-      padding: 4px;
+        padding: 5px;
       color: white;
-    font-weight: 400
+      font-weight: 400;
+      color:white;
+      font-size: 25px;
+      font-family:'Rokkitt', serif;
+          outline: none;
 }
 .text-center.container{
 
@@ -2159,7 +2205,7 @@ body:after {
 .active-banner-slider .item .content {
   position: relative;
   z-index: 3;
-  width: 60%;
+  width: 100%;
 }
 
 @media (max-width: 767px) {

@@ -295,9 +295,9 @@ textarea {
   justify-content: center;
   width: 100%;
 }
-.jobsearchForm{
+/* .jobsearchForm{
   width:74%;
-}
+} */
 button,
 input {
   overflow: visible;
