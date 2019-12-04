@@ -31,6 +31,9 @@ nav li a{
 nav ul{
   width: 100%;
 }
+.hidden{
+  display:none;
+}
 .maincontainer{
 
   border-radius: 10px;

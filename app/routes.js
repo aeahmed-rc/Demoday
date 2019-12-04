@@ -19,63 +19,105 @@ module.exports = function(app, passport, db, io, ObjectId) {
     db.collection('questions').find().toArray((err, result) => {
       // console.log(result)
       if (err) return console.log(err)
-      console.log('saved to database')
+      console.log('found questions', result.length)
       res.render('qandcomment.ejs', {
-        users:req.user,
+        user: req.user,
         questions: result
       })
     })
   })
 
-  app.post('/questions',isLoggedIn, (req, res) => {
-      db.collection('questions').save({question: req.body.question, comment:[],user: req.user._id,thumbsUp:0,thumbsDown:0}, (err, result) => {
-          if (err) return console.log(err)
-          console.log('saved to database')
-          res.redirect('/q&a')
-        })
+  app.post('/questions', isLoggedIn, (req, res) => {
+    db.collection('questions').save({
+      question: req.body.question,
+      comment: [],
+      user: req.user._id,
+      thumbsUp: 0,
+      thumbsDown: 0
+    }, (err, result) => {
+      if (err) return console.log(err)
+      console.log('saved new question to new databse')
+      res.redirect('/q&a')
+    })
+  })
+
+
+  app.put('/q&a/questions', isLoggedIn, (req, res) => {
+    console.log('about to save comment')
+    console.log(req.body.question, req.body.comment)
+    db.collection('questions')
+      .findOneAndUpdate({
+        question: req.body.question,
+        user: req.user._id
+      }, {
+        $push: {
+          comment: req.body.comment
+        }
+      }, {
+        sort: {
+          _id: -1
+        },
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
       })
+  })
 
+  app.put('/q&a/thumbsUps', isLoggedIn, (req, res) => {
+    console.log('about to upvote')
+    console.log(req.body.question, req.body.comment, req.body.thumbsUp)
 
-  app.put('/q&a/questions',isLoggedIn, (req, res) => {
-        console.log('the put works')
-        console.log(req.body.question,req.body.comment)
-        db.collection('questions')
-        .findOneAndUpdate({question: req.body.question, user:req.user._id}, {
-          $push: {
-            comment: req.body.comment
-          }
-        }, {
-          sort: {_id: -1},
-          upsert: true
-        }, (err, result) => {
-          if (err) return res.send(err)
-          res.send(result)
-        })
+    db.collection('questions')
+      .findOneAndUpdate({
+        question: req.body.question,
+      }, {
+        $set: {
+          thumbsUp: parseInt(req.body.thumbsUp) + 1
+        }
+      }, {
+        sort: {
+          _id: -1
+        },
+
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
       })
+  })
 
-      app.put('/q&a/thumbsUps',isLoggedIn, (req, res) => {
-            console.log('the put works')
-            console.log(req.body.question,req.body.comment,req.body.thumbsUp)
-            db.collection('questions')
-            .findOneAndUpdate({question: req.body.question, comment:req.body.comment, }, {
-              $set: {
-                thumbsUp: req.body.thumbsUp +1
-              }
-            }, {
-              sort: {_id: -1},
-              upsert: true
-            }, (err, result) => {
-              if (err) return res.send(err)
-              res.send(result)
-            })
-          })
+  app.put('/q&a/thumbsdwn', isLoggedIn, (req, res) => {
+    console.log('about to upvote')
+    console.log(req.body.question, req.body.comment, req.body.thumbsUp)
+
+    db.collection('questions')
+      .findOneAndUpdate({
+        question: req.body.question,
+      }, {
+        $set: {
+          thumbsUp: parseInt(req.body.thumbsUp) - 1
+        }
+      }, {
+        sort: {
+          _id: -1
+        },
+
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+  })
 
   app.delete('/q&a/delete', isLoggedIn, (req, res) => {
-            db.collection('questions').findOneAndDelete({question: req.body.question, comment:req.body.comment, user: req.user._id}, (err, result) => {
-              if (err) return res.send(500, err)
-              res.send('Message deleted!')
-            })
-          })
+    console.log("this is the delete",req.body.question,req.user._id)
+    db.collection('questions').findOneAndDelete({
+      question: req.body.question,
+      user: req.user._id
+    }, (err, result) => {
+      if (err) return res.send(500, err)
+      res.send('Message deleted!')
+    })
+  })
 
 
   // gets company login page
@@ -119,7 +161,7 @@ module.exports = function(app, passport, db, io, ObjectId) {
     }).toArray((err, result) => {
       // console.log(result)
       if (err) return console.log(err)
-      console.log('saved to database')
+      console.log('looking for info on specific job')
       res.render('SimpleInfo.ejs', {
         Info: result
       })
@@ -145,7 +187,7 @@ module.exports = function(app, passport, db, io, ObjectId) {
     }).toArray((err, result) => {
       // console.log(result)
       if (err) return console.log(err)
-      console.log('saved to database')
+      console.log('looking for job in main input')
       res.render('SimpleInfo.ejs', {
         Info: removeField(result)
       })
@@ -179,24 +221,24 @@ module.exports = function(app, passport, db, io, ObjectId) {
     let role = req.body.role.toLowerCase()
     let company = req.body.company.toLowerCase()
     let location = req.body.location.toLowerCase()
-if(role){
-  db.collection('jobpostings').save({
-    role,
-    company,
-    location,
-    description: req.body.description,
-    Url: req.body.Url
-  }, (err, result) => {
-    console.log(result)
-    if (err) return console.log(err)
-    console.log('saved to database')
-    res.render('companyJobadd.ejs')
-  })
-} else{
-  res.render('companyJobadd.ejs',{
-    message: req.flash('Empty Form')
-  })
-}
+    if (role) {
+      db.collection('jobpostings').save({
+        role,
+        company,
+        location,
+        description: req.body.description,
+        Url: req.body.Url
+      }, (err, result) => {
+        console.log(result)
+        if (err) return console.log(err)
+        console.log('companies posted jobs')
+        res.render('companyJobadd.ejs')
+      })
+    } else {
+      res.render('companyJobadd.ejs', {
+        message: req.flash('Empty Form')
+      })
+    }
     // console.log('this is role in postjobs',role,company,location)
     //
     // console.log('This is the url',req.body.Url)
