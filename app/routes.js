@@ -1,4 +1,4 @@
-module.exports = function(app, passport, db, io, ObjectId) {
+module.exports = function(app, passport, db, io, ObjectId,stringStrip) {
 
   // normal routes ===============================================================
 
@@ -156,16 +156,17 @@ module.exports = function(app, passport, db, io, ObjectId) {
 
   app.get('/individualResources', isLoggedIn, (req, res) => {
     let Job = req.user.category.toLowerCase()
-    db.collection('resources').find({
+    db.collection('resources').findOne({
       Job: Job
-    }).toArray((err, result) => {
+    }, ((err, result) => {
       // console.log(result)
       if (err) return console.log(err)
       console.log('looking for info on specific job')
       res.render('SimpleInfo.ejs', {
+        user:req.user,
         Info: result
       })
-    })
+    }));
   })
 
   function removeField(result) {
@@ -218,6 +219,7 @@ module.exports = function(app, passport, db, io, ObjectId) {
 
   // Companies post jobs saves to database
   app.post('/postJobs', (req, res) => {
+    console.log("hi: "+req.body.role,  stringStrip(req.body.description), stringStrip(req.body.responsibilities))
     let role = req.body.role.toLowerCase()
     let company = req.body.company.toLowerCase()
     let location = req.body.location.toLowerCase()
@@ -226,8 +228,9 @@ module.exports = function(app, passport, db, io, ObjectId) {
         role,
         company,
         location,
-        description: req.body.description,
-        Url: req.body.Url
+        description: stringStrip(req.body.description),
+        Url: req.body.Url,
+        responsibilities: stringStrip(req.body.responsibilities)
       }, (err, result) => {
         console.log(result)
         if (err) return console.log(err)
@@ -278,8 +281,9 @@ module.exports = function(app, passport, db, io, ObjectId) {
     }, (err, result) => {
       console.log('this is the results', result)
       if (err) return console.log(err)
-      
+
       res.render('roledescription.ejs', {
+        user: req.user,
         jobdescription: result
       })
     })

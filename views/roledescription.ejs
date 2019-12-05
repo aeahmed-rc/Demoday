@@ -102,8 +102,8 @@
                         <img src="images/account/thumb-1.jpg" class="img-fluid" alt="">
                       </a>
                       <div class="account-body">
-                        <h5><a href="#">Robert Chavez</a></h5>
-                        <span class="mail">chavez@domain.com</span>
+                        <h5><%= user.local.username %></h5>
+                        <span class="mail"><%= user.local.email %></span>
                       </div>
                     </div>
                     <ul class="account-item-list">
@@ -125,15 +125,10 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                  <li class="menu-item active"><a title="Home" href="home-1.html">Home</a></li>
+                  <li class="menu-item active"><a title="Home" href="/">Home</a></li>
                   <li class="menu-item dropdown">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Jobs</a>
-                    <ul  class="dropdown-menu">
-                      <li class="menu-item"><a  href="job-listing.html">Job Listing</a></li>
-                      <li class="menu-item"><a  href="job-listing-with-map.html">Job Listing With Map</a></li>
-                      <li class="menu-item"><a  href="job-details.html">Job Details</a></li>
-                      <!-- <li class="menu-item"><a  href="post-job.html">Post Job</a></li> -->
-                    </ul>
+                    <a href="/jobposts"  aria-haspopup="true" aria-expanded="false">JobsBoard</a>
+
                   </li>
                   <li class="menu-item dropdown">
                     <a title="" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Candidates</a>
@@ -208,7 +203,7 @@
                     </ul>
                   </li>
                   <li class="menu-item"><a href="contact.html">Contact Us</a></li>
-                  <li class="menu-item post-job"><a href="post-job.html"><i class="fas fa-plus"></i>Post a Job</a></li>
+
                 </ul>
               </div>
             </nav>
@@ -239,7 +234,7 @@
                 </div>
                 <div class="buttons">
                   <a class="save" href="#"><i data-feather="heart"></i>Save Job</a>
-                  <a class="apply" href="<%=jobdescription.Url%>" data-toggle="modal" data-target="#apply-popup-id">Apply Now</a>
+                  <a class="apply" href="<%=jobdescription.Url%>" >Apply Now</a>
 
                 </div>
               </div>
@@ -248,41 +243,25 @@
                   <div class="col-xl-7 col-lg-8">
                     <div class="description details-section">
                       <h4><i data-feather="align-left"></i>Job Description</h4>
-                      <p><%=jobdescription.description%></p>
-                      <p>Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable </p>
+                      <p> <%=jobdescription.description%> </p>
+
                     </div>
                     <div class="responsibilities details-section">
                       <h4><i data-feather="zap"></i>Responsibilities</h4>
                       <ul>
-                        <li>The applicants should have experience in the following areas</li>
-                        <li>Skills on M.S Word, Excel, and Integrated Accounting package i.e. Software</li>
-                        <li>Have sound knowledge of commercial activities.</li>
-                        <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
-                        <li>Good verbal and written communication skills.</li>
-                        <li>Leadership, analytical, and problem-solving abilities.</li>
+                    	<li><%=jobdescription.responsibilities %> </li>
                       </ul>
                     </div>
                     <div class="edication-and-experience details-section">
                       <h4><i data-feather="book"></i>Education + Experience</h4>
-                      <ul>
-                        <li>M.Com (Accounting) / M.B.S / M.B.A under National University with CA course complete.</li>
-                        <li>M.S (Statistics) any Public University / National University.</li>
-                        <li>Masters of library science any Public University.</li>
-                        <li>2 to 3 year(s) Experiance</li>
-                        <li>Females candidate are discourage to apply.</li>
-                      </ul>
+
                     </div>
                     <div class="other-benifit details-section">
                       <h4><i data-feather="gift"></i>Other Benefits</h4>
-                      <ul>
-                        <li>Health and life insurance </li>
-                        <li>2 days of weekend </li>
-                        <li>2 annual performanc Bonuses</li>
-                        <li>Lunch &amp; Snacks</li>
-                      </ul>
+
                     </div>
                     <div class="job-apply-buttons">
-                      <a href="#" class="apply"  data-toggle="modal" data-target="#apply-popup-id">Apply Online</a>
+                      <a href="<%=jobdescription.Url%>" class="apply" >Apply Online</a>
                       <a href="#" class="email"><i data-feather="mail"></i>Email Job</a>
                     </div>
                   </div>
@@ -514,7 +493,7 @@
                 </div>
                 <div class="more">
                   <div class="buttons">
-                    <a href="#" class="button">Apply Now</a>
+                    <a href="<%=jobdescription.Url%>" class="button">Apply Now</a>
                     <a href="#" class="favourite"><i data-feather="heart"></i></a>
                   </div>
                   <p class="deadline">Deadline: Oct 31,  2019</p>
@@ -667,22 +646,22 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="JobBoardTem/JobsMain/assets/js/jquery.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/popper.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/bootstrap.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/feather.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/bootstrap-select.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/jquery.nstSlider.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/owl.carousel.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/visible.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/jquery.countTo.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/chart.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/plyr.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/tinymce.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/slick.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/jquery.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/popper.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/bootstrap.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/feather.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/bootstrap-select.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/jquery.nstSlider.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/owl.carousel.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/visible.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/jquery.countTo.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/chart.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/plyr.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/tinymce.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/slick.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/jquery.ajaxchimp.min.js"></script>
 
-    <script src="JobBoardTem/JobsMain/js/custom.js"></script>
+    <script src="../JobBoardTem/JobsMain/js/custom.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC87gjXWLqrHuLKR0CTV5jNLdP4pEHMhmg"></script>
     <script src="JobBoardTem/JobsMain/js/map.js"></script>

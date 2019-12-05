@@ -1,27 +1,167 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div class="">
-          <h3>Info</h3>
-          <ul class="messages">
-          <% for(var i=0; i<Info.length; i++) {%>
-            <li class="message">
-              <span>Facebook Group:<%= Info[i].FacebookGroups %></span>
-              <span> <a href="<%= Info[i].Websites %>"><%= Info[i].Websites %></a> </span>
-              <span><a href="<%= Info[i].Website2 %>"></a><%= Info[i].Website2 %></span>
-            <span><a href="<%= Info[i].Website3 %>"></a><%= Info[i].Website3 %></span>
-            <span><a href="<%= Info[i].Website4 %>"></a><%= Info[i].Website4 %></span>
-              <span><a href="/Usersignup"></a><%= Info[i].More %></span>
-              <!-- <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-              <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
-              <span><i class="fa fa-trash" aria-hidden="true"></i></span> -->
-            </li>
-          <% } %>
-          </ul>
-          </div>
-  </body>
+
+<html>
+	<head>
+		<title>Multiverse by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="simpleinfoassets/css/main.css" />
+		<noscript><link rel="stylesheet" href="simpleinfoassets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html"><strong>Multiverse</strong> by HTML5 UP</a></h1>
+						<nav>
+							<ul>
+								<li><a href="#footer" class="icon solid fa-info-circle">About</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+						<article class="thumb">
+							<a href="images/simpleinfoimages/fulls/01.jpg" class="image"><img src="images/simpleinfoimages/thumbs/01.jpg" alt="">Step 1</a>
+
+							<h2>Hi, <%= user.local.username %></h2>
+							<p>You will succeed and you will get your career back! Just know that you are special and have the skills needed to achieve
+				your goals.</p>
+
+
+
+						</article>
+
+						<article class="thumb">
+							<a href="images/simpleinfoimages/fulls/02.jpg" class="image"><img src="images/simpleinfoimages/thumbs/02.jpg" alt="" />Step 2</a>
+
+							<h2>Groups</h2>
+								<p>Join groups on facebook or other social media sites.<br> Find others in your shoes and connect.</p>
+								<p>Search this Facebook group:<%= Info.FacebookGroups %></p>
+						</article>
+
+						<article class="thumb">
+							<a href="images/simpleinfoimages/fulls/03.jpg" class="image"><img src="images/simpleinfoimages/thumbs/03.jpg" alt="" />Step 3</a>
+							<h2>Resource </h2>
+							<p>Visit webiste below to get more information on exams you may need to take </p>
+							<p><a href="<%= Info.Websites %>">Go to Website</a></p>
+						</article>
+
+						<article class="thumb">
+							<a href="images/simpleinfoimages/fulls/04.jpg" class="image"><img src="images/simpleinfoimages/thumbs/04.jpg" alt="" />Step 4</a>
+							<h2>Resource Two</h2>
+							<p>Visit website below to receive more job skills training! IINE is an organziation that offers amazing opportunities for immigrants.<br> </p>
+							<p><a href="<%= Info.Website3 %>">Go to Website</a></p>
+						</article>
+
+						<article class="thumb">
+							<a href="images/simpleinfoimages/fulls/05.jpg" class="image"><img src="images/simpleinfoimages/thumbs/05.jpg" alt="" />Step 5</a>
+							<h2>Resource Three</h2>
+							<p>Visit websites below to receive more job skills training! Both are amazing organziations that offer opportunities for immigrants.<br> </p>
+							<p><a href="<%= Info.Website2 %>">Go to Website</a></p>
+							<p><a href="<%= Info.Website3 %>">Go to Website</a></p>
+						</article>
+
+						<article class="thumb">
+							<a href="images/simpleinfoimages/fulls/06.jpg" class="image"><img src="images/simpleinfoimages/thumbs/06.jpg" alt="" />Step 6</a>
+							<h2>Resource Four</h2>
+							<p>Visit websites below to receive more information on how your state can offer services to help you get back to your career. </p>
+							<p><a href="<%= Info.Website4 %>">Go to Website</a></p>
+							<p><a href="<%= Info.Website5 %>">Go to Website</a></p>
+						</article>
+
+						<article class="thumb">
+							<a href="images/fulls/07.jpg" class="image"><img src="images/thumbs/07.jpg" alt="" /></a>
+							<h2>Mauris id tellus arcu</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/08.jpg" class="image"><img src="images/thumbs/08.jpg" alt="" /></a>
+							<h2>Nunc vehicula id nulla</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/09.jpg" class="image"><img src="images/thumbs/09.jpg" alt="" /></a>
+							<h2>Neque et faucibus viverra</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/10.jpg" class="image"><img src="images/thumbs/10.jpg" alt="" /></a>
+							<h2>Mattis ante fermentum</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/11.jpg" class="image"><img src="images/thumbs/11.jpg" alt="" /></a>
+							<h2>Sed ac elementum arcu</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/12.jpg" class="image"><img src="images/thumbs/12.jpg" alt="" /></a>
+							<h2>Vehicula id nulla dignissim</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer" class="panel">
+						<div class="inner split">
+							<div>
+								<section>
+									<h2>Magna feugiat sed adipiscing</h2>
+									<p>Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum eget quis orci mattis aliquet. Maecenas fringilla et ante at lorem et ipsum. Dolor nulla eu bibendum sapien. Donec non pharetra dui. Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum.</p>
+								</section>
+								<section>
+									<h2>Follow me on ...</h2>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+										<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</section>
+								<p class="copyright">
+									&copy; Unttled. Design: <a href="http://html5up.net">HTML5 UP</a>.
+								</p>
+							</div>
+							<div>
+								<section>
+									<h2>Get in touch</h2>
+									<form method="post" action="#">
+										<div class="fields">
+											<div class="field half">
+												<input type="text" name="name" id="name" placeholder="Name" />
+											</div>
+											<div class="field half">
+												<input type="text" name="email" id="email" placeholder="Email" />
+											</div>
+											<div class="field">
+												<textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><input type="submit" value="Send" class="primary" /></li>
+											<li><input type="reset" value="Reset" /></li>
+										</ul>
+									</form>
+								</section>
+							</div>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="simpleinfoassets/js/jquery.min.js"></script>
+			<script src="simpleinfoassets/js/jquery.poptrox.min.js"></script>
+			<script src="simpleinfoassets/js/browser.min.js"></script>
+			<script src="simpleinfoassets/js/breakpoints.min.js"></script>
+			<script src="simpleinfoassets/js/util.js"></script>
+			<script src="simpleinfoassets/js/main.js"></script>
+
+	</body>
 </html>

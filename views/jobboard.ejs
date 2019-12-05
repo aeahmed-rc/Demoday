@@ -147,7 +147,11 @@
                 <li class="menu-item"><a href="register.html">Register</a></li>
               </ul>
             </li>
-            <li class="menu-item post-job"><a title="Title" href="post-job.html"><i class="fas fa-plus"></i>Post a Job</a></li>
+						<% if (user.admin === true){ %>
+  <li class="menu-item post-job"><a title="Title" href="/postJobs"><i class="fas fa-plus"></i>Post a Job</a></li>
+
+						<% } %>
+
           </ul>
           <ul class="navbar-nav ml-auto account-nav">
             <li class="dropdown menu-item header-top-notification">
@@ -320,7 +324,7 @@
           <div class="col">
             <div class="searchAndFilter-block">
               <div class="searchAndFilter">
-							
+
                 <form action="/jobpostssearch" method="post" class="search-form">
                 <input class="inputs"type="text"  name="search" placeholder="Search Keywords" />
 								<input class="inputs"type="text" name="location"placeholder="All Locations" />

@@ -533,3 +533,269 @@
 
 </body>
 </html>
+<li>Leadership, analytical, and problem-solving abilities.</li></li>
+<li>The applicants should have experience in the following areas</li>
+<li>Skills on M.S Word, Excel, and Integrated Accounting package i.e. Software</li>
+<li>Have sound knowledge of commercial activities.</li>
+<li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
+<li>Good verbal and written communication skills.</li>
+<li>Leadership, analytical, and problem-solving abilities.</li></li>
+
+modal:
+data-toggle="modal" data-target="#apply-popup-id"
+
+
+
+
+<div class="">
+      <h3>Info</h3>
+      <ul class="messages">
+      <% for(var i=0; i<Info.length; i++) {%>
+        <li class="message">
+          <span>Facebook Group:<%= Info[i].FacebookGroups %></span>
+          <span> <a href="<%= Info[i].Websites %>">Link to resource</a> </span>
+          <span><a href="<%= Info[i].Website2 %>"></a><%= Info[i].Website2 %></span>
+        <span><a href="<%= Info[i].Website3 %>"></a><%= Info[i].Website3 %></span>
+        <span><a href="<%= Info[i].Website4 %>"></a><%= Info[i].Website4 %></span>
+          <span><a href="/Usersignup"></a><%= Info[i].More %></span>
+          <!-- <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+          <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+          <span><i class="fa fa-trash" aria-hidden="true"></i></span> -->
+        </li>
+      <% } %>
+      </ul>
+      </div>
+
+
+      <!DOCTYPE html>
+      <html lang="en" dir="ltr">
+        <head>
+          <meta charset="utf-8">
+          <title></title>
+          <link rel="stylesheet" href="css/simpleinfo/simpleinfo.css">
+        </head>
+        <body>
+          <% for(var i=0; i<Info.length; i++) {%>
+          <button data-modal-trigger="trigger-1" class="trigger">
+          	<i class="fa fa-fire" aria-hidden="true"></i>
+          	Modal 1
+          </button>
+          <button data-modal-trigger="trigger-2" class="trigger">
+          	<i class="fa fa-fire" aria-hidden="true"></i>
+          	Modal 2
+          </button>
+          <button data-modal-trigger="trigger-3" class="trigger">
+          	<i class="fa fa-fire" aria-hidden="true"></i>
+          	Modal 3
+          </button>
+
+          <div data-modal="trigger-1" class="modal">
+          	<article class="content-wrapper">
+          		<button class="close"></button>
+          		<header class="modal-header">
+          			<h2>Step 1</h2>
+          		</header>
+          		<div class="content">
+                <h1><%= user.local.username %></h1>
+          			<p>You will succeed and you will get your career back! Just know that you are special and have the skills needed to achieve
+          your goals.</p>
+          		</div>
+          		<footer class="modal-footer">
+          			<button class="action">Accept</button>
+          			<button class="action">Decline</button>
+          		</footer>
+          	</article>
+          </div>
+
+          <div data-modal="trigger-2" class="modal">
+          	<article class="content-wrapper">
+          		<button class="close"></button>
+          		<header class="modal-header">
+          			<h2>Step 2</h2>
+          		</header>
+          		<div class="content">
+          			<p>Join groups on facebook or other social media sites.<br> Find others in your shoes ans connect.
+
+                 </p>
+                <ul>
+                  <li>Facebook Group:<%= Info[i].FacebookGroups %></li>
+                </ul>
+
+          		</div>
+          		<footer class="modal-footer">
+          			<button class="action">Accept</button>
+          			<button class="action">Decline</button>
+          		</footer>
+          	</article>
+          </div>
+
+          <div data-modal="trigger-3" class="modal">
+          	<article class="content-wrapper">
+          		<button class="close"></button>
+          		<header class="modal-header">
+          			<h2>Step 3</h2>
+          		</header>
+          		<div class="content">
+          			<p> One resource to help guide you with resume buiding.</p>
+                <a href="<%= Info[i].Websites %>">Link to resource</a>
+          		</div>
+          		<footer class="modal-footer">
+          			<button class="action">Accept</button>
+          			<button class="action">Decline</button>
+          		</footer>
+          	</article>
+          </div>
+
+          <div data-modal="trigger-3" class="modal">
+          	<article class="content-wrapper">
+          		<button class="close"></button>
+          		<header class="modal-header">
+          			<h2>This is a modal 3</h2>
+          		</header>
+          		<div class="content">
+          			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.</p>
+          		</div>
+          		<footer class="modal-footer">
+          			<button class="action">Accept</button>
+          			<button class="action">Decline</button>
+          		</footer>
+          	</article>
+          </div>
+
+          <div data-modal="trigger-3" class="modal">
+          	<article class="content-wrapper">
+          		<button class="close"></button>
+          		<header class="modal-header">
+          			<h2>This is a modal 3</h2>
+          		</header>
+          		<div class="content">
+          			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.</p>
+          		</div>
+          		<footer class="modal-footer">
+          			<button class="action">Accept</button>
+          			<button class="action">Decline</button>
+          		</footer>
+          	</article>
+          </div>
+            <% } %>
+
+
+          <script type="text/javascript" src=js/simpleinfo/simpleinfo.js>
+
+          </script>
+        </body>
+      </html>
+
+
+      <!doctype html>
+      <html lang="en">
+        <head>
+          <!-- Required meta tags -->
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+          <title>Oficiona</title>
+
+          <!-- Bootstrap CSS -->
+          <link rel="stylesheet" href="JobBoardTem/JobsMain/assets/css/bootstrap.min.css">
+
+          <!-- External Css -->
+          <link rel="stylesheet" href="JobBoardTem/JobsMain/assets/css/fontawesome-all.min.css">
+          <link rel="stylesheet" href="JobBoardTem/JobsMain/assets/css/themify-icons.css" />
+          <link rel="stylesheet" href="JobBoardTem/JobsMain/assets/css/et-line.css" />
+          <link rel="stylesheet" href="JobBoardTem/JobsMain/assets/css/bootstrap-select.min.css" />
+          <link rel="stylesheet" href="JobBoardTem/JobsMain/assets/css/plyr.css" />
+          <link rel="stylesheet" href="JobBoardTem/JobsMain/assets/css/flag.css" />
+          <link rel="stylesheet" href="JobBoardTem/JobsMain/assets/css/slick.css" />
+          <link rel="stylesheet" href="JobBoardTem/JobsMain/assets/css/owl.carousel.min.css" />
+          <link rel="stylesheet" href="JobBoardTem/JobsMain/assets/css/jquery.nstSlider.min.css" />
+
+          <!-- Custom Css -->
+          <link rel="stylesheet" type="text/css" href="JobBoardTem/JobsMain/css/main.css">
+
+          <!-- Fonts -->
+          <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600%7CRoboto:300i,400,500" rel="stylesheet">
+
+          <!-- Favicon -->
+          <link rel="icon" href="images/favicon.png">
+          <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+          <link rel="apple-touch-icon" sizes="72x72" href="images/icon-72x72.png">
+          <link rel="apple-touch-icon" sizes="114x114" href="images/icon-114x114.png">
+
+
+          <!--[if lt IE 9]>
+          <script src="assets/js/html5shiv.min.js"></script>
+          <script src="assets/js/respond.min.js"></script>
+          <![endif]-->
+<!-- WORKIGN MODLA But not styled -->
+        </head>
+        <body>
+          <div class="buttons">
+            <a class="save" href="#"><i data-feather="heart"></i>Save Job</a>
+            <a class="apply" href="#" data-toggle="modal" data-target="#apply-popup-id">Step 1</a>
+          </div>
+          <div class="apply-popup">
+            <div class="modal fade" id="apply-popup-id" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title"><i data-feather="edit"></i><%= user.local.username %></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+
+                      <div class="form-group">
+                      <h1>THes</h1>
+                      </div>
+                      <div class="form-group">
+
+                      </div>
+                      <div class="form-group">
+
+                      </div>
+                      <div class="form-group file-input-wrap">
+
+                      </div>
+                      <div class="more-option">
+                        <input class="custom-radio" type="checkbox" id="radio-4" name="termsandcondition">
+                        <label for="radio-4">
+                          <span class="dot"></span> I accept the <a href="#">terms & conditions</a>
+                        </label>
+                      </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Footer End -->
+
+
+          <!-- Optional JavaScript -->
+          <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+          <script src="JobBoardTem/JobsMain/assets/js/jquery.min.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/popper.min.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/bootstrap.min.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/feather.min.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/bootstrap-select.min.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/jquery.nstSlider.min.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/owl.carousel.min.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/visible.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/jquery.countTo.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/chart.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/plyr.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/tinymce.min.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/slick.min.js"></script>
+          <script src="JobBoardTem/JobsMain/assets/js/jquery.ajaxchimp.min.js"></script>
+
+          <script src="JobBoardTem/JobsMain/js/custom.js"></script>
+
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC87gjXWLqrHuLKR0CTV5jNLdP4pEHMhmg"></script>
+          <script src="JobBoardTem/JobsMain/js/map.js"></script>
+
+        </body>
+      </html>
+
+      https://iine.org/job-skills-training-boston/
