@@ -129,23 +129,23 @@ module.exports = function(app, passport, db, io, ObjectId) {
   // app.get('/chat', function(req, res){
   // res.sendFile(__dirname + '/chat.ejs');
   // });
-  app.get('/chat', isLoggedIn, function(req, res) {
-    let dirname = __dirname.slice(0, -3)
-    console.log('Chat is working', dirname);
-    // res.sendFile(dirname + "views" + '/chat.ejs');
-    res.render('chat.ejs')
-    console.log(dirname)
-  })
-
-  io.on('connection', function(socket) {
-    socket.emit('news', {
-      hello: 'world'
-    });
-    socket.on('my other event', function(data) {
-      console.log(data);
-    });
-  });
-  console.log(io.on)
+  // app.get('/chat', isLoggedIn, function(req, res) {
+  //   let dirname = __dirname.slice(0, -3)
+  //   console.log('Chat is working', dirname);
+  //   // res.sendFile(dirname + "views" + '/chat.ejs');
+  //   res.render('chat.ejs')
+  //   console.log(dirname)
+  // })
+  //
+  // io.on('connection', function(socket) {
+  //   socket.emit('news', {
+  //     hello: 'world'
+  //   });
+  //   socket.on('my other event', function(data) {
+  //     console.log(data);
+  //   });
+  // });
+  // console.log(io.on)
   // io.on('connection', function(socket){
   // console.log('a user connected');
   // socket.on('disconnect', function(){
@@ -272,12 +272,13 @@ module.exports = function(app, passport, db, io, ObjectId) {
 
   //  this gets the description of each role when clicked
   app.get('/roledescription', isLoggedIn, function(req, res) {
+    console.log('this is the description query',req.query.role)
     db.collection('jobpostings').findOne({
       role: req.query.role
     }, (err, result) => {
       console.log('this is the results', result)
       if (err) return console.log(err)
-
+      
       res.render('roledescription.ejs', {
         jobdescription: result
       })
@@ -322,51 +323,7 @@ module.exports = function(app, passport, db, io, ObjectId) {
   });
   //
   // // message board routes ===============================================================
-  //
-  //     // app.post('/messages', (req, res) => {
-  //     //   db.collection('messages').save({name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown:0}, (err, result) => {
-  //     //     if (err) return console.log(err)
-  //     //     console.log('saved to database')
-  //     //     res.redirect('/profile')
-  //     //   })
-  //     // })
-  //     //
-  //     // app.put('/messages', (req, res) => {
-  //     //   db.collection('messages')
-  //     //   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-  //     //     $set: {
-  //     //       thumbUp:req.body.thumbUp + 1
-  //     //     }
-  //     //   }, {
-  //     //     sort: {_id: -1},
-  //     //     upsert: true
-  //     //   }, (err, result) => {
-  //     //     if (err) return res.send(err)
-  //     //     res.send(result)
-  //     //   })
-  //     // })
-  //     //
-  //     // app.put('/messages2', (req, res) => {
-  //     //   db.collection('messages')
-  //     //   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-  //     //     $set: {
-  //     //       thumbUp:req.body.thumbUp -1
-  //     //     }
-  //     //   }, {
-  //     //     sort: {_id: -1},
-  //     //     upsert: true
-  //     //   }, (err, result) => {
-  //     //     if (err) return res.send(err)
-  //     //     res.send(result)
-  //     //   })
-  //     // })
-  //     //
-  //     // app.delete('/messages', (req, res) => {
-  //     //   db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {
-  //     //     if (err) return res.send(500, err)
-  //     //     res.send('Message deleted!')
-  //     //   })
-  //     // })
+
   //
   // // =============================================================================
   // // AUTHENTICATE (FIRST LOGIN) ==================================================
