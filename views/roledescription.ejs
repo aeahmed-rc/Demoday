@@ -233,6 +233,7 @@
                   </div>
                 </div>
                 <div class="buttons">
+                  <button type="button" name="button" onclick="savedJob('<%= user._id %>','<%=jobdescription._id %>')">Save Job</button>
                   <a class="save" href="#"><i data-feather="heart"></i>Save Job</a>
                   <a class="apply" href="<%=jobdescription.Url%>" >Apply Now</a>
 
@@ -645,7 +646,11 @@
 
 
     <!-- Optional JavaScript -->
+    <script type="text/javascript" src="../js/main.js">
+
+    </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
     <script src="../JobBoardTem/JobsMain/assets/js/jquery.min.js"></script>
     <script src="../JobBoardTem/JobsMain/assets/js/popper.min.js"></script>
     <script src="../JobBoardTem/JobsMain/assets/js/bootstrap.min.js"></script>

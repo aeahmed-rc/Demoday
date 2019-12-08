@@ -77,6 +77,26 @@ for (let j = 0; j < thumbsdwn.length; j++) {
     })
 };
 
+function savedJob(userId,jobId){
+  console.log('hi')
+  console.log(userId,jobId)
+  fetch('/savedJob', {
+    method: 'put',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+    'userId':userId,
+    'jobId':jobId
+    })
+  })
+  .then(response => {
+    if (response.ok) return response.json()
+  })
+  .then(data => {
+    console.log("response save job",data)
+    window.location.reload(true)
+  })
+}
+
 
 
 for(let i=0;i< deletes.length;i++){

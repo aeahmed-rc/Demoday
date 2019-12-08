@@ -289,6 +289,28 @@ module.exports = function(app, passport, db, io, ObjectId,stringStrip) {
     })
   });
 
+//  SAVE Favorite JOBS
+app.put('/savedJob', isLoggedIn, (req, res) => {
+  console.log('about to save comment')
+  console.log("favorite jobs",req.body.userId, req.body.jobId)
+  db.collection('users')
+    .findOneAndUpdate({
+      user: req.user.userId
+    }, {
+      $push: {
+        savedJobs: req.body.jobId
+      }
+    }, {
+      sort: {
+        _id: -1
+      },
+      upsert: true
+    }, (err, result) => {
+      if (err) return res.send(err)
+      res.send(result)
+    })
+})
+
   // FRIENDS
   app.get('/friends', isLoggedIn, function(req, res) {
     console.log(req.user.category)

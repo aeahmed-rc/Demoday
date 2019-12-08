@@ -10,6 +10,7 @@ var userSchema = mongoose.Schema({
         email        : String,
         password     : String
     },
+    savedJobs        : Array,
     public           : Boolean,
     category         : String,
     admin            : Boolean,
