@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -86,14 +85,14 @@
             </li>
           </ul>
           <ul class="navbar-nav ml-auto main-nav">
-            <li class="menu-item active"><a title="Home" href="home-1.html">Home</a></li>
+            <li class="menu-item active"><a title="Home" href="/jobposts">Home</a></li>
             <li class="menu-item dropdown">
               <a title="" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Jobs</a>
               <ul  class="dropdown-menu">
                 <li class="menu-item"><a href="job-listing.html">Job Listing</a></li>
                 <li class="menu-item"><a href="job-listing-with-map.html">Job Listing With Map</a></li>
                 <li class="menu-item"><a href="job-details.html">Job Details</a></li>
-                <li class="menu-item"><a href="post-job.html">Post Job</a></li>
+                <!-- <li class="menu-item"><a href="post-job.html">Post Job</a></li> -->
               </ul>
             </li>
             <li class="menu-item dropdown">
@@ -147,11 +146,7 @@
                 <li class="menu-item"><a href="register.html">Register</a></li>
               </ul>
             </li>
-						<% if (user.admin === true){ %>
-  <li class="menu-item post-job"><a title="Title" href="/postJobs"><i class="fas fa-plus"></i>Post a Job</a></li>
-
-						<% } %>
-
+            <!-- <li class="menu-item post-job"><a title="Title" href="post-job.html"><i class="fas fa-plus"></i>Post  Job</a></li> -->
           </ul>
           <ul class="navbar-nav ml-auto account-nav">
             <li class="dropdown menu-item header-top-notification">
@@ -193,13 +188,9 @@
                 </div>
               </div>
             </li>
-						<% if (user.admin === false){ %>
-<li class="menu-item login-popup"><a href="/profile" class="post-job-btn">Back to Profile</a></li>
-
-						<% } %>
-
-            <li class="menu-item login-popup"><a href="/logOut" class="post-job-btn">Logout</a></li>
-
+            <% if (user.admin === false){ %>
+            <li class="menu-item login-popup"><a href="/profile" class="post-job-btn">Back to Profile</a></li>
+            <% } %>
           </ul>
         </div>
       </nav>
@@ -308,9 +299,9 @@
         <div class="row">
           <div class="col-12">
             <div class="banner-content">
-              <h1>58,246 Job Listed</h1>
-              <p>Create free account to find thousands Jobs, Employment & Career Opportunities around you!</p>
-              <a href="add-resume.html" class="button">Upload Resume</a>
+              <h1>Saved Jobs</h1>
+              <!-- <p>Create free account to find thousands Jobs, Employment & Career Opportunities around you!</p> -->
+              <!-- <a href="add-resume.html" class="button">Upload Resume</a> -->
             </div>
           </div>
         </div>
@@ -325,10 +316,9 @@
           <div class="col">
             <div class="searchAndFilter-block">
               <div class="searchAndFilter">
-
-                <form action="/jobpostssearch" method="post" class="search-form">
+                <form action="/savedJobsSearch" method="post" class="search-form">
                 <input class="inputs"type="text"  name="search" placeholder="Search Keywords" />
-								<input class="inputs"type="text" name="location"placeholder="All Locations" />
+                <input class="inputs"type="text" name="location"placeholder="All Locations" />
                   <button type="submit" class="button primary-bg"><i class="fas fa-search"></i>Search Job</button>
                 </form>
                 <div class="filter-categories">
@@ -355,6 +345,7 @@
     <!-- Search and Filter End -->
 
     <!-- Jobs -->
+    <!-- Jobs -->
     <div class="section-padding-bottom alice-bg">
       <div class="container">
         <div class="row">
@@ -366,7 +357,7 @@
               <li class="nav-item">
                 <a class="nav-link" id="feature-tab" data-toggle="tab" href="#feature" role="tab" aria-controls="feature" aria-selected="false">Feature Job</a>
               </li>
-              	<% if (user.admin === false){ %>
+                <% if (user.admin === false){ %>
               <li class="nav-item">
                 <a class="nav-link" id="feature-tab"  href="/savedJobs" role="tab" aria-controls="feature" aria-selected="false">Saved Jobs</a>
               </li>
@@ -377,7 +368,7 @@
               <div class="tab-pane fade show active" id="recent" role="tabpanel" aria-labelledby="recent-tab">
                 <div class="row">
                   <div class="col-lg-6">
-										<% for(var i=0; i<jobposting.length; i++) {%>
+                    <% for(var i=0; i<savedJobs.length; i++) {%>
                     <div class="job-list half-grid">
                       <div class="thumb">
                         <a href="#">
@@ -386,592 +377,25 @@
                       </div>
                       <div class="body">
                         <div class="content">
-                          <h4><h4><a href="job-details.html"><%=jobposting[i].role%> </a></h4></h4>
+                          <h4><h4><a href="job-details.html"><%=savedJobs[i].role%> </a></h4></h4>
                           <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i><%=jobposting[i].company%></a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i><%=jobposting[i].location%></a></span>
+                            <span class="company"><a href="#"><i data-feather="briefcase"></i><%=savedJobs[i].company%></a></span>
+                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i><%=savedJobs[i].location%></a></span>
                             <span class="job-type temporary"><a href="#"><i data-feather="clock"></i>Temporary</a></span>
-                          
-														<span class="job-type temporary"><a href="roledescription/?role=<%=jobposting[i].role%>"><i data-feather="clock"></i>description</a></span>
+                            <span class="job-type temporary"><a href="roledescription/?role=<%=savedJobs[i].role%>"><i data-feather="clock"></i>description</a></span>
+                          </div>
+                        </div>
+                        <div class="more">
+                          <div class="buttons">
+                            <a href="#" class="button">Apply Now</a>
+                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
+                          </div>
+                          <p class="deadline">Deadline: Oct 31, 2018</p>
+                        </div>
+                      </div>
+                    </div>
+                      <% } %>
 
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-											<% } %>
-                    <!-- <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-9.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Nutrition Advisor</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Theoreo</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>New York City</a></span>
-                            <span class="job-type full-time"><a href="#"><i data-feather="clock"></i>Full Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-10.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">UI Designer</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Degoin</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>San Francisco</a></span>
-                            <span class="job-type part-time"><a href="#"><i data-feather="clock"></i>Part Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-3.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Land Development Marketer</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Realouse</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>Washington, D.C.</a></span>
-                            <span class="job-type freelance"><a href="#"><i data-feather="clock"></i>Freelance</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-10.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">UI Designer</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Degoin</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>San Francisco</a></span>
-                            <span class="job-type part-time"><a href="#"><i data-feather="clock"></i>Part Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-3.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Land Development Marketer</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Realouse</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>Washington, D.C.</a></span>
-                            <span class="job-type freelance"><a href="#"><i data-feather="clock"></i>Freelance</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-1.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Designer Required</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Theoreo</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>New York City</a></span>
-                            <span class="job-type full-time"><a href="#"><i data-feather="clock"></i>Full Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-2.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Project Manager</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Degoin</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>San Francisco</a></span>
-                            <span class="job-type part-time"><a href="#"><i data-feather="clock"></i>Part Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-										<% for(var i=0; i<jobposting.length; i++) {%>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-8.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-
-                      <div class="body">
-
-                        <div class="content">
-                          <h4><a href="job-details.html"><%=jobposting[i].role%> </a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i><%=jobposting[i].company%></a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i><%=jobposting[i].location%></a></span>
-                            <span class="job-type temporary"><a href="#"><i data-feather="clock"></i>Temporary</a></span>
-                          </div>
-                        </div>
-
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-											<% } %>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-9.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Nutrition Advisor</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Theoreo</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>New York City</a></span>
-                            <span class="job-type full-time"><a href="#"><i data-feather="clock"></i>Full Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-1.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Designer Required</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Theoreo</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>New York City</a></span>
-                            <span class="job-type full-time"><a href="#"><i data-feather="clock"></i>Full Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-2.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Project Manager</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Degoin</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>San Francisco</a></span>
-                            <span class="job-type part-time"><a href="#"><i data-feather="clock"></i>Part Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="feature" role="tabpanel" aria-labelledby="feature-tab">
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-10.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-listing.html">UI Designer</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Degoin</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>San Francisco</a></span>
-                            <span class="job-type part-time"><a href="#"><i data-feather="clock"></i>Part Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-1.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-listing.html">Designer Required</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Theoreo</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>New York City</a></span>
-                            <span class="job-type full-time"><a href="#"><i data-feather="clock"></i>Full Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-2.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-listing.html">Project Manager</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Degoin</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>San Francisco</a></span>
-                            <span class="job-type part-time"><a href="#"><i data-feather="clock"></i>Part Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-1.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-listing.html">Designer Required</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Theoreo</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>New York City</a></span>
-                            <span class="job-type full-time"><a href="#"><i data-feather="clock"></i>Full Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-8.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-listing.html">Restaurant Team Member - Crew </a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Geologitic</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>New Orleans</a></span>
-                            <span class="job-type temporary"><a href="#"><i data-feather="clock"></i>Temporary</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-9.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-listing.html">Nutrition Advisor</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Theoreo</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>New York City</a></span>
-                            <span class="job-type full-time"><a href="#"><i data-feather="clock"></i>Full Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-3.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Land Development Marketer</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Realouse</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>Washington, D.C.</a></span>
-                            <span class="job-type freelance"><a href="#"><i data-feather="clock"></i>Freelance</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-2.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Project Manager</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Degoin</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>San Francisco</a></span>
-                            <span class="job-type part-time"><a href="#"><i data-feather="clock"></i>Part Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-8.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Restaurant Team Member - Crew </a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Geologitic</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>New Orleans</a></span>
-                            <span class="job-type temporary"><a href="#"><i data-feather="clock"></i>Temporary</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-9.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Nutrition Advisor</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Theoreo</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>New York City</a></span>
-                            <span class="job-type full-time"><a href="#"><i data-feather="clock"></i>Full Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-10.png" class="img-fluid" alt="">
-                        </a>
-                      </div>
-                      <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">UI Designer</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Degoin</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>San Francisco</a></span>
-                            <span class="job-type part-time"><a href="#"><i data-feather="clock"></i>Part Time</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="job-list half-grid">
-                      <div class="thumb">
-                        <a href="#">
-                          <img src="images/job/company-logo-3.png" class="img-fluid" alt="">
-                        </a>
-                      </div> -->
-                      <!-- <div class="body">
-                        <div class="content">
-                          <h4><a href="job-details.html">Land Development Marketer</a></h4>
-                          <div class="info">
-                            <span class="company"><a href="#"><i data-feather="briefcase"></i>Realouse</a></span>
-                            <span class="office-location"><a href="#"><i data-feather="map-pin"></i>Washington, D.C.</a></span>
-                            <span class="job-type freelance"><a href="#"><i data-feather="clock"></i>Freelance</a></span>
-                          </div>
-                        </div>
-                        <div class="more">
-                          <div class="buttons">
-                            <a href="#" class="button">Apply Now</a>
-                            <a href="#" class="favourite"><i data-feather="heart"></i></a>
-                          </div>
-                          <p class="deadline">Deadline: Oct 31, 2018</p>
-                        </div>
-                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -980,7 +404,7 @@
           </div>
         </div>
       </div>
-    </div>
+
     <!-- Jobs End -->
 
     <!-- Top Companies -->
@@ -1443,24 +867,24 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="JobBoardTem/JobsMain/assets/js/jquery.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/popper.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/bootstrap.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/feather.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/bootstrap-select.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/jquery.nstSlider.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/owl.carousel.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/visible.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/jquery.countTo.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/chart.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/plyr.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/tinymce.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/slick.min.js"></script>
-    <script src="JobBoardTem/JobsMain/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/jquery.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/popper.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/bootstrap.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/feather.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/bootstrap-select.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/jquery.nstSlider.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/owl.carousel.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/visible.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/jquery.countTo.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/chart.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/plyr.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/tinymce.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/slick.min.js"></script>
+    <script src="../JobBoardTem/JobsMain/assets/js/jquery.ajaxchimp.min.js"></script>
 
-    <script src="JobBoardTem/js/custom.js"></script>
+    <script src="../JobBoardTem/JobsMain/js/custom.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC87gjXWLqrHuLKR0CTV5jNLdP4pEHMhmg"></script>
-    <script src="JobBoardTem/js/map.js"></script>
+    <script src="../JobBoardTem/JobsMain/js/map.js"></script>
   </body>
 </html>

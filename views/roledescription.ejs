@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Oficiona</title>
+    <title>degreeIn</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../JobBoardTem/JobsMain/assets/css/bootstrap.min.css">
@@ -232,12 +232,15 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="buttons">
-                  <button type="button" name="button" onclick="savedJob('<%= user._id %>','<%=jobdescription._id %>')">Save Job</button>
-                  <a class="save" href="#"><i data-feather="heart"></i>Save Job</a>
+
+                  <button class="save" type="button" name="button" onclick="savedJob('<%= user._id %>','<%=jobdescription._id %>')"><i class="heart"data-feather="heart"></i>Save Job</button>
+
                   <a class="apply" href="<%=jobdescription.Url%>" >Apply Now</a>
 
                 </div>
+
               </div>
               <div class="details-information section-padding-60">
                 <div class="row">
