@@ -1,4 +1,4 @@
-module.exports = function(app, passport, db, io, ObjectId, stringStrip,client) {
+module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
 
     // normal routes ===============================================================
 
