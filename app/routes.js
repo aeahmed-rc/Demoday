@@ -1,5 +1,9 @@
-module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
+var apiKeys = require('../config/apikeys.js');
 
+
+module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
+var accountSid = apiKeys.accountSid
+var authToken= apiKeys.authToken
     // normal routes ===============================================================
 
     // show the home page (will also have our login links)
@@ -202,6 +206,19 @@ module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
 
     // company adds to jobboard when logged in or signup get redirected here to begin adding jobs
     app.get('/postJobs', isLoggedIn,function(req, res) {
+      console.log(req.user.PhoneNumber)
+      console.log("this is the username:",req.user.local.username)
+      var client =require('twilio')(accountSid,authToken)
+      let numberTo= req.user.PhoneNumber
+      let name= req.user.local.username
+      client.messages
+        .create({
+           body: `Thank you ${name} for signing up to degreein and thank you for coming to DemoDay.It was a pleasure speaking to you and hope to connect with you again soon!`,
+           from: '+12053464383',
+           to: numberTo
+         })
+        .then(message => console.log(message.sid));
+
       let user= new ObjectId(req.user._id)
       console.log("this is the company user:",user)
       db.collection('users').find({user}).toArray((err, result) => {
@@ -489,7 +506,7 @@ module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
       }));
       //  gets the companies signup page
       app.get('/companySignup', function(req, res) {
-        console.log(req.body.admin)
+
         res.render('companySignup.ejs', {
           message: req.flash('signupMessage')
         });
@@ -500,6 +517,7 @@ module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
         successRedirect: '/postJobs', // redirect to the secure profile section
         failureRedirect: '/companySignup', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
+
       }));
 
       app.get('/companyLogin', function(req, res) {

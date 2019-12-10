@@ -54,8 +54,7 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 const stringStrip= require("string-strip-html")
 var configDB = require('./config/database.js');
-// var apiKeys = require('./config/apikeys.js');
-// const client = require('twilio')(apiKeys.accountSid, apiKeys.authToken);
+const client = require('twilio')
 
 var db
 
