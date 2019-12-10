@@ -1,4 +1,4 @@
-module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
+module.exports = function(app, passport, db, io, ObjectId, stringStrip,client) {
 
     // normal routes ===============================================================
 
@@ -127,7 +127,7 @@ module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
     // chat page
     //  chat box
     app.get('/chat', function(req, res){
-    res.sendFile(__dirname + '/chat.ejs');
+    res.render('chat.ejs');
     });
     // app.get('/chat', isLoggedIn, function(req, res) {
     //   let dirname = __dirname.slice(0, -3)
@@ -243,7 +243,7 @@ module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
     //     .create({
     //        body: 'Thank you  for signing up tp ',
     //        from: '+12053464383',
-    //        to:' +17814921879'
+    //        to: '+17814921879'
     //      })
     //     .then(message => console.log(message.sid));
     // })
@@ -251,6 +251,7 @@ module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
     // Companies post jobs saves to database
     app.post('/postJobs', (req, res) => {
       console.log("hi: " + req.body.role, stringStrip(req.body.description), stringStrip(req.body.responsibilities))
+
       let role = req.body.role.toLowerCase()
       let company = req.body.company.toLowerCase()
       let location = req.body.location.toLowerCase()

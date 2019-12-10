@@ -54,8 +54,8 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 const stringStrip= require("string-strip-html")
 var configDB = require('./config/database.js');
-// var apiKeys = require('./config/apikeys.js');
-// const client = require('twilio')(accountSid, authToken);
+var apiKeys = require('./config/apikeys.js');
+const client = require('twilio')(apiKeys.accountSid, apiKeys.authToken);
 
 var db
 
@@ -63,7 +63,7 @@ var db
 mongoose.connect(configDB.url,  { useNewUrlParser: true }, (err, database) => {
   if (err) return console.log(err)
   db = database
-  require('./app/routes.js')(app, passport, db, io, ObjectId,stringStrip);
+  require('./app/routes.js')(app, passport, db, io, ObjectId,stringStrip, client);
 }); // connect to our database
 
 //app.listen(port, () => {

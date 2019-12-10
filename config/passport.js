@@ -61,7 +61,7 @@ module.exports = function(passport) {
                 // set the user's local credentials
                 console.log(req.body)
                 newUser.local.username = req.body.username;
-
+                newUser.PhoneNumber = `+1${req.body.PhoneNumber}`;
                 newUser.category       = req.body.category
                 newUser.public         = req.body.public === 'true'
                 console.log('admin',req.body.admin)
