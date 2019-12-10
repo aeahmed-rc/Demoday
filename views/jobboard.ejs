@@ -375,9 +375,11 @@
 
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="recent" role="tabpanel" aria-labelledby="recent-tab">
+
                 <div class="row">
-                  <div class="col-lg-6">
-										<% for(var i=0; i<jobposting.length; i++) {%>
+
+                  <div class="col-lg-6 top">
+                    <% for(var i=0; i<jobposting.length; i++) {%>
                     <div class="job-list half-grid">
                       <div class="thumb">
                         <a href="#">
@@ -386,12 +388,12 @@
                       </div>
                       <div class="body">
                         <div class="content">
-                          <h4><h4><a href="job-details.html"><%=jobposting[i].role%> </a></h4></h4>
+                          <h4><a href="job-details.html"><%=jobposting[i].role%> </a></h4>
                           <div class="info">
                             <span class="company"><a href="#"><i data-feather="briefcase"></i><%=jobposting[i].company%></a></span>
                             <span class="office-location"><a href="#"><i data-feather="map-pin"></i><%=jobposting[i].location%></a></span>
                             <span class="job-type temporary"><a href="#"><i data-feather="clock"></i>Temporary</a></span>
-                          
+
 														<span class="job-type temporary"><a href="roledescription/?role=<%=jobposting[i].role%>"><i data-feather="clock"></i>description</a></span>
 
                           </div>
@@ -405,7 +407,7 @@
                         </div>
                       </div>
                     </div>
-											<% } %>
+                      <% } %>
                     <!-- <div class="job-list half-grid">
                       <div class="thumb">
                         <a href="#">
@@ -603,9 +605,9 @@
                           <p class="deadline">Deadline: Oct 31, 2018</p>
                         </div>
                       </div>
-                    </div>
-											<% } %>
-                    <div class="job-list half-grid">
+                    </div> -->
+											<!-- <% } %> -->
+                    <!-- <div class="job-list half-grid">
                       <div class="thumb">
                         <a href="#">
                           <img src="images/job/company-logo-9.png" class="img-fluid" alt="">
@@ -679,11 +681,11 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="tab-pane fade" id="feature" role="tabpanel" aria-labelledby="feature-tab">
                 <div class="row">
                   <div class="col-lg-6">
-                    <div class="job-list half-grid">
+                    <!-- <div class="job-list half-grid">
                       <div class="thumb">
                         <a href="#">
                           <img src="images/job/company-logo-10.png" class="img-fluid" alt="">
@@ -706,8 +708,8 @@
                           <p class="deadline">Deadline: Oct 31, 2018</p>
                         </div>
                       </div>
-                    </div>
-                    <div class="job-list half-grid">
+                    </div> -->
+                    <!-- <div class="job-list half-grid">
                       <div class="thumb">
                         <a href="#">
                           <img src="images/job/company-logo-1.png" class="img-fluid" alt="">
@@ -972,15 +974,24 @@
                           <p class="deadline">Deadline: Oct 31, 2018</p>
                         </div>
                       </div> -->
+
                     </div>
+
                   </div>
                 </div>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
+
     <!-- Jobs End -->
 
     <!-- Top Companies -->

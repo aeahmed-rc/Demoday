@@ -126,9 +126,9 @@ module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
     });
     // chat page
     //  chat box
-    // app.get('/chat', function(req, res){
-    // res.sendFile(__dirname + '/chat.ejs');
-    // });
+    app.get('/chat', function(req, res){
+    res.sendFile(__dirname + '/chat.ejs');
+    });
     // app.get('/chat', isLoggedIn, function(req, res) {
     //   let dirname = __dirname.slice(0, -3)
     //   console.log('Chat is working', dirname);
@@ -176,7 +176,8 @@ module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
           Job: item.Job,
           FacebookGroups: item.FacebookGroups,
           Websites: item.Websites,
-          More: item.More
+          More: item.More,
+
         }
       });
     }
@@ -190,6 +191,7 @@ module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
         if (err) return console.log(err)
         console.log('looking for job in main input')
         res.render('SimpleInfo.ejs', {
+          user: req.user,
           Info: removeField(result)
         })
       })
@@ -223,7 +225,28 @@ module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
         })
       })
     });
+    // app.get('/nonloggedIn', function(req, res) {
+    //   db.collection('jobpostings').find().toArray((err, result) => {
+    //     console.log('this is the results of jobPosts', result)
+    //     if (err) return console.log(err)
+    //
+    //     res.render('jobboard.ejs', {
+    //       jobposting: result,
+    //       user: req.user
+    //     })
+    //   })
+    // });
 
+
+    // app.get('/testTwillio', function(req,res){
+    //   client.messages
+    //     .create({
+    //        body: 'Thank you  for signing up tp ',
+    //        from: '+12053464383',
+    //        to:' +17814921879'
+    //      })
+    //     .then(message => console.log(message.sid));
+    // })
 
     // Companies post jobs saves to database
     app.post('/postJobs', (req, res) => {
@@ -476,7 +499,9 @@ module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
         successRedirect: '/postJobs', // redirect to the secure profile section
         failureRedirect: '/companySignup', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
-      })); app.get('/companyLogin', function(req, res) {
+      }));
+
+      app.get('/companyLogin', function(req, res) {
         res.render('companyLogin.ejs', {
           message: req.flash('signupMessage')
         });

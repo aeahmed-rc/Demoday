@@ -190,7 +190,9 @@
             </li>
             <% if (user.admin === false){ %>
             <li class="menu-item login-popup"><a href="/profile" class="post-job-btn">Back to Profile</a></li>
+            <li class="menu-item login-popup"><a href="/logOut" class="post-job-btn">LogOut</a></li>
             <% } %>
+
           </ul>
         </div>
       </nav>
@@ -367,7 +369,7 @@
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="recent" role="tabpanel" aria-labelledby="recent-tab">
                 <div class="row">
-                  <div class="col-lg-6">
+                  <div class="col-lg-6 top">
                     <% for(var i=0; i<savedJobs.length; i++) {%>
                     <div class="job-list half-grid">
                       <div class="thumb">

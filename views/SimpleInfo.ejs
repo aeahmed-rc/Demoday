@@ -26,8 +26,11 @@
 					<div id="main">
 						<article class="thumb">
 							<a href="images/simpleinfoimages/fulls/01.jpg" class="image"><img src="images/simpleinfoimages/thumbs/01.jpg" alt="">Step 1</a>
+							<% if(Info.public == true ){ %>
+							<h2>Hi,<%= user.local.username %></h2>
+							<% } %>
+							 <h2> Hi </h2>
 
-							<h2>Hi, <%= user.local.username %></h2>
 							<p>You will succeed and you will get your career back! Just know that you are special and have the skills needed to achieve
 				your goals.</p>
 

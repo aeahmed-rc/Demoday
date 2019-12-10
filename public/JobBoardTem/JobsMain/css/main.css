@@ -40,7 +40,7 @@
 	26.0 Contact Style
 	27.0 Payment Style
 	28.0 Account Style
-	
+
 -------------------------------------------*/
 /*----------------------------------------------
 	1.0 General Style
@@ -79,6 +79,7 @@ h4 a,
 h5 a,
 h6 a {
   color: inherit;
+  text-transform: capitalize
 }
 
 h1 a:hover,
@@ -138,6 +139,7 @@ a:focus {
   display: inline-block;
   color: inherit;
   outline: none;
+  text-transform: capitalize;
 }
 
 .button {
@@ -2284,10 +2286,16 @@ a:focus {
   display: none;
   visibility: hidden;
 }
+.col-lg-6.top{
+  display: flex;
+    height: auto;
+    flex-wrap: wrap;
+    min-width: 100%;
+}
 
 .job-list {
   border-top: 1px solid rgba(0, 0, 0, 0.08);
-  width: 100%;
+  width: 50%;
   -webkit-transition: all .3s ease;
   -o-transition: all .3s ease;
   transition: all .3s ease;

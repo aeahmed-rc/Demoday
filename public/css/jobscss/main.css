@@ -115,6 +115,11 @@ a {
       font-family:'Rokkitt', serif;
       cursor: pointer;
 }
+.col-lg-6.top{
+  display: flex;
+    height: auto;
+    flex-wrap: wrap;
+}
 
 /* .images{
   width:50%;
