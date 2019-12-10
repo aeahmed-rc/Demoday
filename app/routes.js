@@ -2,8 +2,8 @@ var apiKeys = require('../config/apikeys.js');
 
 
 module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
-var accountSid = apiKeys.accountSid
-var authToken= apiKeys.authToken
+var accountSid = process.env.SID; //apiKeys.accountSid
+var authToken= process.env.AUTH; //apiKeys.authToken
     // normal routes ===============================================================
 
     // show the home page (will also have our login links)
