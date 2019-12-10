@@ -1,4 +1,4 @@
-var apiKeys = require('../config/apikeys.js');
+// var apiKeys = require('../config/apikeys.js');
 
 
 module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
