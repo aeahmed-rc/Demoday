@@ -56,16 +56,16 @@ const stringStrip= require("string-strip-html")
 var configDB = require('./config/database.js');
 const client = require('twilio')
 
+const assert = require('assert');
+const url = 'mongodb://localhost:27017'
+
 var db
 
 // configuration ===============================================================
 mongoose.connect(configDB.url,  { useNewUrlParser: true }, (err, database) => {
-  if (err) {
+  if (err) return console.log(err);
+  db = database
 
-    return console.log(err);
-  } else {
-    db = database
-  }
   require('./app/routes.js')(app, passport, db, io, ObjectId,stringStrip);
 }); // connect to our database
 

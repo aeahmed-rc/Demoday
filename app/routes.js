@@ -208,12 +208,13 @@ var authToken= process.env.AUTH; //apiKeys.authToken
     app.get('/postJobs', isLoggedIn,function(req, res) {
       console.log(req.user.PhoneNumber)
       console.log("this is the username:",req.user.local.username)
+
       var client =require('twilio')(accountSid,authToken)
       let numberTo= req.user.PhoneNumber
-      let name= req.user.local.username
+      // let name= req.user.local.username
       client.messages
         .create({
-           body: `Thank you ${name} for signing up to degreein and thank you for coming to DemoDay.It was a pleasure speaking to you and hope to connect with you again soon!`,
+           body: `Thank you for signing up to degreein and thank you for coming to DemoDay.It was a pleasure speaking to you and hope to connect with you again soon!`,
            from: '+12053464383',
            to: numberTo
          })
