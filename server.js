@@ -36,7 +36,7 @@
 
 
 
-
+require('dotenv').config()
 var express  = require('express');
 var app      = express();
 var port     = process.env.PORT || 8080;
@@ -47,7 +47,7 @@ var passport = require('passport');
 var flash    = require('connect-flash');
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
-
+require('dotenv').config()
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');

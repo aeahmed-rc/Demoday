@@ -2,8 +2,9 @@
 
 
 module.exports = function(app, passport, db, io, ObjectId, stringStrip) {
-var accountSid = process.env.SID; //apiKeys.accountSid
-var authToken= process.env.AUTH; //apiKeys.authToken
+
+var accountSid = process.env.accountSid; //apiKeys.accountSid
+var authToken= process.env.authToken; //apiKeys.authToken
     // normal routes ===============================================================
 
     // show the home page (will also have our login links)
@@ -211,10 +212,10 @@ var authToken= process.env.AUTH; //apiKeys.authToken
 
       var client =require('twilio')(accountSid,authToken)
       let numberTo= req.user.PhoneNumber
-      // let name= req.user.local.username
+      let name= req.user.local.username
       client.messages
         .create({
-           body: `Thank you for signing up to degreein and thank you for coming to DemoDay.It was a pleasure speaking to you and hope to connect with you again soon!`,
+           body: `Thank you ${name} for signing up to degreein and thank you for coming to DemoDay.It was a pleasure speaking to you and hope to connect with you again soon!`,
            from: '+12053464383',
            to: numberTo
          })
@@ -230,6 +231,15 @@ var authToken= process.env.AUTH; //apiKeys.authToken
       })
     });
 
+    app.get('/postJobs2', isLoggedIn,function(req, res) {
+    let user= new ObjectId(req.user._id)
+      db.collection('users').find({user}).toArray((err, result) => {
+        console.log('this is the results of jobPosts', result)
+      res.render('companyJobadd.ejs',{
+        user: req.user
+      })
+      })
+    });
 
 
     app.get('/jobposts', isLoggedIn, function(req, res) {
@@ -529,7 +539,7 @@ var authToken= process.env.AUTH; //apiKeys.authToken
 
       app.post('/companyLogin', passport.authenticate('local-login', {
 
-        successRedirect: '/postJobs', // redirect to the secure profile section
+        successRedirect: '/postJobs2', // redirect to the secure profile section
         failureRedirect: '/companyLogin', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
       }));

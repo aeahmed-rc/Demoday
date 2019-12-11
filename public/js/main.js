@@ -79,7 +79,7 @@ for (let j = 0; j < thumbsdwn.length; j++) {
 
 function savedJob(userId,jobId){
   let heart = document.querySelector('.heart')
-  heart.style.background= 'red';
+  // heart.style.background= 'red';
   console.log('hi')
   console.log(userId,jobId)
   fetch('/savedJob', {
